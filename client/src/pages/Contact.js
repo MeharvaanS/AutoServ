@@ -44,10 +44,13 @@ function Contact() {
   return (
     <div className="contact-container">
       {/* Video Background */}
-      <video autoPlay loop muted className="video-background-contact">
-        <source src="/videos/v4.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div className="video-section">
+        <video autoPlay loop muted playsInline className="video-background-contact" controls={false}>
+          <source src="/videos/v4.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="overlay"></div> {/* Overlay for better text visibility */}
+      </div>
 
       <h1>Contact me</h1>
       <div className="contact-columns">
@@ -110,9 +113,7 @@ function Contact() {
         {/* Right Column - WhatsApp Button and Info */}
         <div className="contact-info">
           <h2>Better yet, see us in person!</h2>
-          <p>
-            Feel free to contact me during normal business hours.
-          </p>
+          <p>Feel free to contact me during normal business hours.</p>
           <a
             href="https://wa.me/4162762096"
             className="whatsapp-button"
