@@ -1,0 +1,272 @@
+/* Contact.css */
+
+.contact-container {
+  max-width: 1200px; /* Limit width for larger screens */
+  margin: 0 auto;
+  background: linear-gradient(180deg, #000000, #0f161d); /* Dark metallic gradient */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 50px;
+}
+
+.business-info a {
+  text-decoration: none; /* Remove underline */
+  color: whitesmoke; /* Set text color to whitesmoke */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.business-info a:hover {
+  color: #18689a; /* Change text color to blue on hover */
+}
+
+.video-background-contact {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0; /* Ensure video is behind content */
+}
+
+.contact-container h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px; /* Larger margin for desktop */
+  position: relative;
+  z-index: 1;
+  font-size: 2.5rem; /* Larger font size for desktop */
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  animation: slideUp 1.5s ease-in-out;
+}
+
+.contact-columns {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Two columns for laptop/desktop view */
+@media (min-width: 769px) {
+  .contact-columns {
+    flex-direction: row; /* Side-by-side columns */
+  }
+
+  .contact-form,
+  .contact-info {
+    flex: 1; /* Equal width for both columns */
+  }
+}
+
+/* Stack vertically for phone/tablet view */
+@media (max-width: 768px) {
+  .contact-columns {
+    flex-direction: column; /* Stack vertically */
+  }
+
+  .contact-container h1 {
+    font-size: 2rem; /* Smaller font size for phones */
+    margin-bottom: 30px;
+  }
+
+  .contact-form h2,
+  .contact-info h2 {
+    font-size: 1.5rem; /* Smaller font size for phones */
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"] {
+    font-size: 14px; /* Smaller font size for phones */
+  }
+
+  .file-upload label {
+    font-size: 14px; /* Smaller font size for phones */
+  }
+
+  .file-upload p {
+    font-size: 12px; /* Smaller font size for phones */
+  }
+
+  button[type="submit"] {
+    font-size: 14px; /* Smaller font size for phones */
+  }
+
+  .contact-info p {
+    font-size: 14px; /* Smaller font size for phones */
+  }
+
+  .whatsapp-button {
+    font-size: 14px; /* Smaller font size for phones */
+  }
+
+  .business-info p {
+    font-size: 16px; /* Smaller font size for phones */
+  }
+}
+
+.contact-form{
+  background: rgb(0 0 0 / 77%);
+  padding: 20px;
+  border-radius: 8px;
+}
+.contact-info {
+  background: rgba(0, 0, 0, 0.393);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.contact-form h2,
+.contact-info h2 {
+  font-weight: 100;
+  color: #ffffff;
+  margin-bottom: 25px; /* Larger margin for desktop */
+  font-size: 1.8rem; /* Larger font size for desktop */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  color: #ffffffcf;
+  margin-bottom: 5px;
+  font-size: 16px; /* Larger font size for desktop */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+  width: 100%;
+  color: #ccc;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #cccccca9;
+  border-radius: 0;
+  font-size: 16px; /* Larger font size for desktop */
+  background-color: transparent;
+  outline: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus {
+  border-bottom: 2px solid #cbcbcbde;
+}
+
+.form-group input[type="text"]:hover,
+.form-group input[type="email"]:hover,
+.form-group input[type="tel"]:hover {
+  transform: translateY(-5px);
+}
+
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px; /* Larger font size for desktop */
+}
+
+.file-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-upload label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: #d4470090;
+  font-size: 16px; /* Larger font size for desktop */
+}
+
+.file-upload label:hover {
+  color: #d44700a7;
+}
+
+.attachment-icon {
+  font-size: 16px;
+  color: #d4470073;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.file-upload p {
+  font-size: 14px; /* Larger font size for desktop */
+  color: #777;
+  margin: 0;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(41, 84, 104, 0.605);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px; /* Larger font size for desktop */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: rgb(31 76 126 / 61%);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.contact-info p {
+  color: #fff7f7bb;
+  margin-bottom: 35px; /* Larger margin for desktop */
+  font-family: math;
+  font-size: 16px; /* Larger font size for desktop */
+}
+
+.whatsapp-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgba(41, 84, 104, 0.605);
+  color: white;
+  text-decoration: none;
+  border-radius: 15px;
+  font-size: 16px; /* Larger font size for desktop */
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  background-color: rgb(31 76 126 / 61%);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.whatsapp-icon {
+  font-size: 20px;
+}
+
+.business-info {
+  background-color: transparent;
+  padding: 15px;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.business-info p {
+  margin: 5px 0;
+  font-size: 18px; /* Larger font size for desktop */
+}

@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/* Ensure no margin or padding */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* Customize scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+body::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar width */
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e304e; /* Dark track color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #b3b3b3; /* Orange thumb color */
+  border-radius: 4px; /* Rounded corners */
+  border: 2px solid #141d2d; /* Add a border to make it pop */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #ffffff; /* Darker orange on hover */
+}
+
+/* Customize scrollbar for Firefox */
+body {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #b3b3b3 #162031; /* Thumb and track color */
+}
