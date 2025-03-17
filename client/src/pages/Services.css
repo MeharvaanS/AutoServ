@@ -52,7 +52,7 @@
   width: 100%;
   max-width: 1200px;
   padding: 20px;
-  animation: slideUp 1.5s ease-in-out;
+  animation: slideUp 1s ease-in-out;
   position: relative; /* Ensure it's above the overlay */
   z-index: 2;
 }
