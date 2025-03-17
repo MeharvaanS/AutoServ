@@ -27,6 +27,13 @@ const Home = () => {
 
   // Fetch reviews from the backend
   useEffect(() => {
+    axios.get("http://192.168.0.22:5000/reviews")
+      .then((res) => setReviews(res.data))
+      .catch((error) => console.error("Error fetching reviews:", error));
+  }, []);
+
+   // Fetch reviews from the backend
+   useEffect(() => {
     axios.get("http://localhost:5000/reviews")
       .then((res) => setReviews(res.data))
       .catch((error) => console.error("Error fetching reviews:", error));
