@@ -41,7 +41,7 @@ const About = () => {
           <div className="about-item">
             <FaTools className="about-icon" />
             <h3>Who I Am</h3>
-            <p>
+            <p class="about-details">
               At Mac's Shop, I am more than just a car repair service. I am a passionate professional
               dedicated to providing the best automotive care. With years of experience and a commitment
               to excellence, I ensure your vehicle is in the best hands.
@@ -50,7 +50,7 @@ const About = () => {
           <div className="about-item">
             <FaCogs className="about-icon" />
             <h3>My Mission</h3>
-            <p>
+            <p class="about-details">
               My mission is to deliver top-notch automotive services with precision, transparency,
               and trust. I aim to build long-lasting relationships with my customers by offering
               reliable and efficient solutions for all their car needs.
@@ -59,7 +59,7 @@ const About = () => {
           <div className="about-item">
             <FaCar className="about-icon" />
             <h3>Why Choose Me?</h3>
-            <p>
+            <p class="about-details">
               I stand out because of my attention to detail, state-of-the-art equipment, and a
               customer-first approach. Whether it's a routine check-up or a major repair, I treat
               every vehicle as if it were my own.

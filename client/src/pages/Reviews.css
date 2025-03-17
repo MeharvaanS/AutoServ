@@ -241,5 +241,6 @@
   .submit-button {
     padding: 10px 100px; /* Smaller padding for phones */
     font-size: 1rem; /* Smaller font size for phones */
+    white-space: nowrap;
   }
 }
