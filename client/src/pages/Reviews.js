@@ -1,26 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { FaStar } from "react-icons/fa"; // Import Font Awesome icons
-import './Reviews.css'; // Updated CSS file
+import { FaStar } from "react-icons/fa";
+import './Reviews.css';
 
 function Reviews() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [rating, setRating] = useState(5);
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    const currentRef = formRef.current; // Copy to variable
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []); // Empty dependency array means this runs once on mount
 
   const scrollToReviewContent = () => {
-    const aboutContent = document.querySelector(".review-form-section");
-    if (aboutContent) {
-      aboutContent.scrollIntoView({ behavior: "smooth" });
-    }
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Submit a new review
   const submitReview = () => {
     const payload = { name, message, rating: Number(rating) };
     axios.post("http://localhost:5000/reviews", payload)
       .then(() => {
-        window.location.reload(); // Reload the page to show the new review
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error submitting review:", error.response?.data || error.message);
@@ -43,7 +69,10 @@ function Reviews() {
       </div>
 
       {/* Review Form Section */}
-      <div className="review-form-section">
+      <div 
+        ref={formRef} 
+        className="review-form-section"
+      >
         <div className="form-container">
           <h2 id="review-title">Leave a Review</h2>
           <input

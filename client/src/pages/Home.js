@@ -1,12 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope } from "react-icons/fa"; // Import Font Awesome icons
+import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope } from "react-icons/fa";
 import './Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
   const [reviews, setReviews] = useState([]);
+  const servicesCardsRef = useRef(null);
+  const [areCardsVisible, setAreCardsVisible] = useState(false);
+
+  // Set up intersection observer for services cards
+  useEffect(() => {
+    const currentRef = servicesCardsRef.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAreCardsVisible(true);
+          } else {
+            if (entry.boundingClientRect.top > 0) {
+              setAreCardsVisible(false);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
 
   const scrollToServiceContent = () => {
     const aboutContent = document.querySelector(".services-section");
@@ -20,7 +51,7 @@ const Home = () => {
     if (container) {
       container.scrollBy({
         left: scrollOffset,
-        behavior: "smooth", // Smooth scrolling
+        behavior: "smooth",
       });
     }
   };
@@ -32,17 +63,10 @@ const Home = () => {
       .catch((error) => console.error("Error fetching reviews:", error));
   }, []);
 
-   // Fetch reviews from the backend
-   useEffect(() => {
-    axios.get("http://localhost:5000/reviews")
-      .then((res) => setReviews(res.data))
-      .catch((error) => console.error("Error fetching reviews:", error));
-  }, []);
-
   // Helper function to render stars based on rating
   const renderStars = (rating) => {
-    const fullStars = "⭐".repeat(rating); // Full stars based on rating
-    const emptyStars = "☆".repeat(5 - rating); // Empty stars for the remaining
+    const fullStars = "⭐".repeat(rating);
+    const emptyStars = "☆".repeat(5 - rating);
     return fullStars + emptyStars;
   };
 
@@ -76,7 +100,10 @@ const Home = () => {
       {/* Services Section */}
       <div className="services-section">
         <h2 id="services-title">Our Services</h2>
-        <div className="services-grid">
+        <div 
+          ref={servicesCardsRef} 
+          className={`services-grid ${areCardsVisible ? 'visible' : ''}`}
+        >
           <div className="service-card">
             <div className="service-icon">🔧</div>
             <h3>General Repairs</h3>
@@ -102,12 +129,10 @@ const Home = () => {
       <div className="testimonials-section">
         <h2 id="review-title-home">What Our Customers Say</h2>
         <div className="testimonials-scroll-wrapper">
-          {/* Left Scroll Button */}
           <button className="scroll-button left" onClick={() => scrollTestimonials(-300)}>
-            <FaChevronLeft /> {/* Font Awesome left arrow */}
+            <FaChevronLeft />
           </button>
 
-          {/* Testimonials Container */}
           <div className="testimonials-container">
             <div className="testimonials-grid">
               {reviews.map((review, index) => (
@@ -124,9 +149,8 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Right Scroll Button */}
           <button className="scroll-button right" onClick={() => scrollTestimonials(300)}>
-            <FaChevronRight /> {/* Font Awesome right arrow */}
+            <FaChevronRight />
           </button>
         </div>
         <button id="review-button" onClick={handleReviewClick}>
@@ -136,7 +160,6 @@ const Home = () => {
 
       {/* Call-to-Action Section */}
       <div className="cta-section">
-        {/* Video Background */}
         <video autoPlay loop muted playsInline className="cta-video-background">
           <source src="/videos/v2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -144,11 +167,12 @@ const Home = () => {
         <div className="cta-content">
           <h2 className="section-title">Ready to Get Started?</h2>
           <p>Contact me today to schedule your car repair or maintenance.</p>
-          <button className="cta-button" onClick={handleContactClick}><FaEnvelope className="icon" />&nbsp;&nbsp;&nbsp;Contact me</button>
+          <button className="cta-button" onClick={handleContactClick}>
+            <FaEnvelope className="icon" />&nbsp;&nbsp;&nbsp;Contact me
+          </button>
         </div>
       </div>
 
-      {/* Background Effect */}
       <div className="background-effect"></div>
     </div>
   );

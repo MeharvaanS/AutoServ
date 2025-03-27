@@ -110,18 +110,36 @@
   }
 }
 
-.contact-form{
+/* Remove the existing slideUp animation and replace with these */
+
+.contact-form {
   background: rgb(0 0 0 / 77%);
   padding: 20px;
   border-radius: 8px;
-  animation: slideUp 1s ease-in-out;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
+
 .contact-info {
   background: rgba(0, 0, 0, 0.393);
   backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 8px;
-  animation: slideUp 1s ease-in-out;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Animation classes */
+.animate-left.contact-form {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-right.contact-info {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .contact-form h2,

@@ -1,116 +1,244 @@
 /* Navbar container */
 .navbar {
+  background: linear-gradient(180deg, #000000, #0f161d);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  padding: 1.5rem 2rem;
+  position: relative;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: linear-gradient(180deg, #000000, #0f161d); /* Dark metallic gradient */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Strong shadow for depth */
-  color: white;
-  font-family: 'Orbitron', sans-serif; /* Futuristic font */
+}
+
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1001;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
 }
 
 /* Logo styling */
 .logo {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: bold;
-  color: #ffffff; /* Orange accent color */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 3D text effect */
-  letter-spacing: 2px; /* Spaced-out letters for industrial feel */
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
   display: flex;
   align-items: center;
+  transition: font-size 0.3s ease;
+  margin: 0;
 }
 
 /* Logo image styling */
 .logo-img {
-  width: 80px; /* Adjust the size as needed */
+  width: 100px;
   height: auto;
-  margin-right: 10px; /* Space between logo and text */
+  margin-right: 10px;
 }
 
-/* Navigation links container */
-.navbar ul {
+/* Navigation links - DESKTOP */
+.desktop-links {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* Individual list items */
-.navbar ul li {
-  margin: 0 0.5rem; /* Reduced margin for smaller screens */
+/* Individual list items - DESKTOP */
+.desktop-links li {
+  margin: 0 0.5rem;
   position: relative;
 }
 
-/* Link styling */
-.navbar ul li a {
+/* Link styling - DESKTOP */
+.desktop-links li a {
   text-decoration: none;
   color: #fff;
   font-size: 1rem;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   transition: all 0.3s ease;
-  background: #121b23; /* Metallic background */
-  border: 2px solid #5a5959; /* Orange border */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.1); /* 3D effect */
+  background: #121b23;
+  border: 2px solid #5a5959;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between icon and text */
+  gap: 8px;
 }
 
-/* Hover effect for links */
-.navbar ul li a:hover {
+/* Hover effect for links - DESKTOP */
+.desktop-links li a:hover {
   background: #0f37a675;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2); /* Enhanced 3D effect */
-  transform: translateY(-3px); /* Lift effect */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
   color: #fff;
 }
 
-/* Active link styling */
-.navbar ul li a.active {
+/* Active link styling - DESKTOP */
+.desktop-links li a.active {
   background: #0f37a675;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
   color: #fff;
+}
+
+/* Hamburger menu */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+  z-index: 1002;
+  margin-left: auto; /* This pushes it to the right */
+  padding-left: 20px; /* Space between logo and hamburger */
 }
 
 /* Icon styling */
-.icon {
+.iconnav {
   font-size: 1.2rem;
-  color: #ffffff; /* Orange color for icons */
+  color: #ffffff;
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile menu container */
+.nav-links-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  margin-top: 35px ;
+  background: linear-gradient(180deg, #000000, #0f161d);;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  padding-top: 80px;
+}
+
+.nav-links-container.active {
+  transform: translateX(0);
+}
+
+/* Mobile Navigation Links */
+.mobile-links {
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.mobile-links li {
+  margin: 0;
+  width: 100%;
+  border-bottom: 1px solid #2a3a4a;
+}
+
+/* Fixed width for mobile links */
+.mobile-links li a {
+  width: 100%;
+  max-width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  justify-content: center;
+  font-size: 1.2rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+/* Active state for mobile */
+.mobile-links li a.active {
+  background: #020913;
+  color: #fff;
 }
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* Stack logo and tabs vertically */
-    padding: 1rem;
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  .iconnav{
+    margin-right: 10px;
   }
 
   .logo {
-    margin-bottom: 1rem; /* Space between logo and tabs */
+    font-size: 1.4rem;
+  }
+  
+  .logo-img {
+    width: 90px;
+    padding-bottom: 12px;
+  }
+  
+  .hamburger-menu {
+    display: block;
+  }
+  
+  .desktop-links {
+    display: none;
   }
 
-  .navbar ul {
-    width: 100%; /* Full width for tabs */
-    justify-content: space-between; /* Distribute tabs evenly */
-    flex-wrap: wrap; /* Allow wrapping if needed */
+  .navbar {
+    padding: 1rem;
   }
+}
 
-  .navbar ul li {
-    margin: 0 0.05rem; /* Further reduced margin for smaller screens */
+/* Desktop specific styles */
+@media (min-width: 769px) {
+  .mobile-menu-overlay,
+  .nav-links-container {
+    display: none;
   }
-
-  .navbar ul li a {
-    font-size: 0.7rem; /* Smaller font size for phone screens */
-    padding: 0.2rem 0.25rem; /* Reduced padding for smaller screens */
-    gap: 2px; /* Reduced gap between icon and text */
-    height: 20px; /* Increased height to fit content */
+  
+  .mobile-links {
+    display: none;
+  }
+  
+  .desktop-links {
     display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
-  .iconnav {
-    font-size: 0.6rem; /* Smaller icon size for phone screens */
+  .hamburger-menu {
+    display: none;
   }
 }

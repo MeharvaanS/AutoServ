@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import './Contact.css'; // Import the CSS file
-import { FaWhatsapp, FaPhone, FaEnvelope } from 'react-icons/fa'; // Icons for WhatsApp and attachment
+import React, { useState, useEffect, useRef } from 'react';
+import './Contact.css';
+import { FaWhatsapp, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -9,6 +9,35 @@ function Contact() {
     phone: '',
     services: '',
   });
+
+  const formRef = useRef(null);
+  const infoRef = useRef(null);
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const formCurrent = formRef.current;
+    const infoCurrent = infoRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setAnimated(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (formCurrent) observer.observe(formCurrent);
+    if (infoCurrent) observer.observe(infoCurrent);
+
+    return () => {
+      if (formCurrent) observer.unobserve(formCurrent);
+      if (infoCurrent) observer.unobserve(infoCurrent);
+    };
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,18 +50,14 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Construct the mailto link
     const subject = encodeURIComponent('New Contact Form Submission');
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nServices: ${formData.services}`
     );
 
     const mailtoLink = `mailto:macmachado44@gmail.com?subject=${subject}&body=${body}`;
-
-    // Open the default email client
     window.location.href = mailtoLink;
 
-    // Reset form after submission
     setFormData({
       name: '',
       email: '',
@@ -49,13 +74,16 @@ function Contact() {
           <source src="/videos/v4.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="overlay"></div> {/* Overlay for better text visibility */}
+        <div className="overlay"></div>
       </div>
 
       <h1>Contact me</h1>
       <div className="contact-columns">
-        {/* Left Column - Contact Form */}
-        <div className="contact-form">
+        {/* Left Column - Contact Form (slides from left) */}
+        <div 
+          ref={formRef} 
+          className={`contact-form ${animated ? 'animate-left' : ''}`}
+        >
           <h2>Email me!</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -110,8 +138,11 @@ function Contact() {
           </form>
         </div>
 
-        {/* Right Column - WhatsApp Button and Info */}
-        <div className="contact-info">
+        {/* Right Column - Contact Info (slides from right) */}
+        <div 
+          ref={infoRef} 
+          className={`contact-info ${animated ? 'animate-right' : ''}`}
+        >
           <h2>Better yet, see us in person!</h2>
           <p>Feel free to contact me during normal business hours.</p>
           <a
