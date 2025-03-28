@@ -29,6 +29,8 @@
 /* Page Title */
 #services-page-title {
   font-size: 2.5rem;
+  font-weight: 500;
+  margin-top:130px;
   font-family: 'Orbitron', sans-serif;
   margin-bottom: 70px;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
@@ -115,14 +117,51 @@
 /* Service Title */
 .service-title {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 1.1rem; /* Reduced font size for titles */
+  bottom: -15px;
+  font-size: 1.1rem;
   font-family: 'Orbitron', sans-serif;
   color: #fff;
+  width: 100%;
   margin: 0;
-  z-index: 3; /* Ensure title is above the overlay */
+  z-index: 3;
   transition: transform 0.5s ease;
+  padding: 35px 12px;
+  background: rgba(14, 14, 14, 0.854);
+  border-radius: 4px;
+}
+
+/* When hovering the card, hide the title's background */
+.service-item:hover .service-title {
+  background: transparent; /* Remove dark rectangle */
+
+}
+
+/* Remove the image-overlay from the title area */
+.service-image::before {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 50px; /* Adjust based on your title height */
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  border-radius: 4px;
+  display: none; /* We'll handle this with the title's own background */
+}
+
+/* Keep the hover effect for the full card */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.737);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 15px;
+  z-index: 2;
 }
 
 .service-item:hover .service-title {
@@ -156,7 +195,7 @@
 /* Service Price */
 .service-price {
   font-size: 1.2rem;
-  margin-bottom: 70px; /* Increased margin below the price */
+  margin-bottom: 90px; /* Increased margin below the price */
   font-weight: bold;
   color: #aac7ff; /* Blue color for price */
 }

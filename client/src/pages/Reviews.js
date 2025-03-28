@@ -36,7 +36,7 @@ function Reviews() {
         observer.unobserve(currentRef);
       }
     };
-  }, []); // Empty dependency array means this runs once on mount
+  }, []);
 
   const scrollToReviewContent = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -61,8 +61,8 @@ function Reviews() {
           <source src="/videos/v3.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="intro-box">
-          <h1 className="title">Customer Reviews</h1>
+        <div className="intro-box-review">
+          <h1 className="review-title">Customer Reviews</h1>
           <p className="subtitle">Share your experience with me</p>
           <button onClick={scrollToReviewContent} id="review-button-scroll">Review my work</button>
         </div>

@@ -1,14 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { FaHome, FaInfoCircle, FaTools, FaStar, FaEnvelope, FaBars } from "react-icons/fa";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navbarRef = useRef(null);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (navbarRef.current) {
+        const show = window.scrollY > 10;
+        if (show) {
+          navbarRef.current.classList.add('scrolled');
+        } else {
+          navbarRef.current.classList.remove('scrolled');
+        }
+      }
+    };
+
+    // Add event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial check
+    handleScroll();
+    
+    // Clean up
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
@@ -21,7 +44,7 @@ const Navbar = () => {
     <>
       <div className={`mobile-menu-overlay ${isMobileMenuOpen ? "active" : ""}`}></div>
       
-      <nav className="navbar">
+      <nav ref={navbarRef} className="navbar">
         <div className="navbar-header">
           <div className="logo-wrapper">
             <h2 className="logo">
@@ -37,27 +60,27 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <ul className="nav-links desktop-links">
           <li>
-            <NavLink to="/" exact activeClassName="active">
+            <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>
               <FaHome className="iconnav" /> Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/services" activeClassName="active">
+            <NavLink to="/services" className={({ isActive }) => isActive ? "active" : ""}>
               <FaTools className="iconnav" /> Services
             </NavLink>
           </li>
           <li>
-            <NavLink to="/reviews" activeClassName="active">
+            <NavLink to="/reviews" className={({ isActive }) => isActive ? "active" : ""}>
               <FaStar className="iconnav" /> Reviews
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" activeClassName="active">
+            <NavLink to="/contact" className={({ isActive }) => isActive ? "active" : ""}>
               <FaEnvelope className="iconnav" /> Contact
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" activeClassName="active">
+            <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>
               <FaInfoCircle className="iconnav" /> About
             </NavLink>
           </li>
@@ -67,27 +90,27 @@ const Navbar = () => {
         <div className={`nav-links-container ${isMobileMenuOpen ? "active" : ""}`}>
           <ul className="nav-links mobile-links">
             <li>
-              <NavLink to="/" exact activeClassName="active" onClick={toggleMobileMenu}>
+              <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""} onClick={toggleMobileMenu}>
                 <FaHome className="iconnav" /> Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/services" activeClassName="active" onClick={toggleMobileMenu}>
+              <NavLink to="/services" className={({ isActive }) => isActive ? "active" : ""} onClick={toggleMobileMenu}>
                 <FaTools className="iconnav" /> Services
               </NavLink>
             </li>
             <li>
-              <NavLink to="/reviews" activeClassName="active" onClick={toggleMobileMenu}>
+              <NavLink to="/reviews" className={({ isActive }) => isActive ? "active" : ""} onClick={toggleMobileMenu}>
                 <FaStar className="iconnav" /> Reviews
               </NavLink>
             </li>
             <li>
-              <NavLink to="/contact" activeClassName="active" onClick={toggleMobileMenu}>
+              <NavLink to="/contact" className={({ isActive }) => isActive ? "active" : ""} onClick={toggleMobileMenu}>
                 <FaEnvelope className="iconnav" /> Contact
               </NavLink>
             </li>
             <li>
-              <NavLink to="/about" activeClassName="active" onClick={toggleMobileMenu}>
+              <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""} onClick={toggleMobileMenu}>
                 <FaInfoCircle className="iconnav" /> About
               </NavLink>
             </li>

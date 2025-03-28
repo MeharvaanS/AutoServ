@@ -1,15 +1,27 @@
-/* Navbar container */
 .navbar {
-  background: linear-gradient(180deg, #000000, #0f161d);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-  color: white;
-  font-family: 'Orbitron', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   padding: 1.5rem 2rem;
-  position: relative;
-  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.877);
+  background-image: none;
+  box-shadow: none;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.navbar.scrolled {
+  background: linear-gradient(180deg, #000000, #0f161d) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5) !important;
+  padding: 1rem 2rem;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .navbar-header {
@@ -27,7 +39,6 @@
   flex-grow: 1;
 }
 
-/* Logo styling */
 .logo {
   font-size: 1.7rem;
   font-weight: bold;
@@ -40,14 +51,17 @@
   margin: 0;
 }
 
-/* Logo image styling */
 .logo-img {
   width: 100px;
   height: auto;
   margin-right: 10px;
+  transition: all 0.3s ease;
 }
 
-/* Navigation links - DESKTOP */
+.navbar.scrolled .logo-img {
+  width: 90px;
+}
+
 .desktop-links {
   display: flex;
   list-style: none;
@@ -55,13 +69,11 @@
   padding: 0;
 }
 
-/* Individual list items - DESKTOP */
 .desktop-links li {
   margin: 0 0.5rem;
   position: relative;
 }
 
-/* Link styling - DESKTOP */
 .desktop-links li a {
   text-decoration: none;
   color: #fff;
@@ -69,47 +81,37 @@
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   transition: all 0.3s ease;
-  background: #121b23;
-  border: 2px solid #5a5959;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  border: 2px solid transparent;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Hover effect for links - DESKTOP */
+.navbar.scrolled .desktop-links li a {
+  background: #121b23;
+  border: 2px solid #5a5959;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
 .desktop-links li a:hover {
-  background: #0f37a675;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   transform: translateY(-3px);
-  color: #fff;
 }
 
-/* Active link styling - DESKTOP */
-.desktop-links li a.active {
-  background: #0f37a675;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-  color: #fff;
-}
-
-/* Hamburger menu */
 .hamburger-menu {
   display: none;
   cursor: pointer;
   font-size: 1.5rem;
   color: white;
   z-index: 1002;
-  margin-left: auto; /* This pushes it to the right */
-  padding-left: 20px; /* Space between logo and hamburger */
+  margin-left: auto;
+  padding-left: 20px;
 }
 
-/* Icon styling */
 .iconnav {
   font-size: 1.2rem;
   color: #ffffff;
 }
 
-/* Mobile menu overlay */
 .mobile-menu-overlay {
   position: fixed;
   top: 0;
@@ -128,15 +130,14 @@
   visibility: visible;
 }
 
-/* Mobile menu container */
 .nav-links-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  margin-top: 35px ;
-  background: linear-gradient(180deg, #000000, #0f161d);;
+  margin-top: 35px;
+  background: linear-gradient(180deg, #000000, #0f161d);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 1000;
@@ -148,7 +149,6 @@
   transform: translateX(0);
 }
 
-/* Mobile Navigation Links */
 .mobile-links {
   flex-direction: column;
   width: 100%;
@@ -163,7 +163,6 @@
   border-bottom: 1px solid #2a3a4a;
 }
 
-/* Fixed width for mobile links */
 .mobile-links li a {
   width: 100%;
   max-width: 100%;
@@ -182,13 +181,11 @@
   text-decoration: none;
 }
 
-/* Active state for mobile */
 .mobile-links li a.active {
   background: #020913;
   color: #fff;
 }
 
-/* Responsive design for smaller screens */
 @media (max-width: 768px) {
   body.menu-open {
     overflow: hidden;
@@ -197,7 +194,7 @@
     height: 100%;
   }
 
-  .iconnav{
+  .iconnav {
     margin-right: 10px;
   }
 
@@ -223,7 +220,6 @@
   }
 }
 
-/* Desktop specific styles */
 @media (min-width: 769px) {
   .mobile-menu-overlay,
   .nav-links-container {

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(180deg, #0f161d, #1e304e);
+    background: linear-gradient(180deg, #00000000, #010e17);
     position: relative;
     overflow: hidden;
   }
@@ -58,7 +58,7 @@
   .about-content-section {
     padding: 60px 20px;
     padding-bottom: 10px;
-    background: linear-gradient(180deg, #29293200, #0f161d);
+    background: linear-gradient(180deg, #00000000, #010d15ba);
     width: 100%;
     text-align: center;
   }
@@ -98,7 +98,7 @@
   
   .about-icon {
     font-size: 3rem;
-    color: #e67e22;
+    color: #2e5172bf;
     margin-bottom: 20px;
     animation: pulse 2s infinite;
   }
@@ -120,7 +120,7 @@
   .values-section {
     padding: 60px 20px;
     padding-bottom: 120px;
-    background: linear-gradient(180deg, #0f161d, #0d1624);
+    background: linear-gradient(360deg, #000000, #010b13);
     width: 100%;
     text-align: center;
   }
@@ -168,7 +168,7 @@
   
   .value-icon {
     font-size: 3rem;
-    color: #e67e22;
+    color: #2e5172bf;
     margin-bottom: 20px;
     animation: pulse 2s infinite;
   }
@@ -306,3 +306,84 @@
       transform: translateY(-5px);
     }
   }
+
+  .about-item, .value-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .about-item.visible, .value-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .read-more-btn {
+    background: none;
+    border: none;
+    color: #2e5172bf;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+  }
+  
+  .read-more-btn:hover {
+    color: #fff;
+  }
+  
+  .about-details {
+    position: relative;
+    padding-right: 20px;
+  }
+
+  /* Hero Section with Image */
+.hero-section {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.hero-image-container {
+  overflow: hidden;
+  width: 600px;
+}
+
+.hero-image {
+  margin-top: 230px;
+  width: 94%;
+  margin-left: 60px;
+  height: 100%;
+  /* object-fit: cover; */
+  /* object-position: center; */
+}
+
+.intro-box-about {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+  }
+  
+  .hero-image-container {
+    height: 50vh;
+    width: 100%;
+  }
+  
+  .intro-box {
+    height: 50vh;
+    width: 100%;
+  }
+}

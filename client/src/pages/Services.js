@@ -34,7 +34,7 @@ const Services = () => {
       title: "Oil / Filter Replacement + Tire Rotation",
       description: "Includes engine bay inspection and tire inspection.",
       price: "$160",
-      image: "https://images.pexels.com/photos/8478247/pexels-photo-8478247.jpeg?auto=compress&cs=tinysrgb&w=600", // Example image path
+      image: "https://images.pexels.com/photos/16341407/pexels-photo-16341407/free-photo-of-pictographs-on-dashboard-in-car.jpeg?auto=compress&cs=tinysrgb&w=1200", // Example image path
     },
     {
       id: 3,
@@ -55,7 +55,7 @@ const Services = () => {
       title: "Tire Puncture Repair",
       description: "Quick and reliable tire puncture repair.",
       price: "$40",
-      image: "https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=600", // Example image path
+      image: "https://images.pexels.com/photos/2922140/pexels-photo-2922140.jpeg?auto=compress&cs=tinysrgb&w=1200", // Example image path
     },
     {
       id: 6,

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope } from "react-icons/fa";
+import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope, FaCar, FaBatteryFull } from "react-icons/fa";
 import './Home.css';
 
 const Home = () => {
@@ -86,7 +86,7 @@ const Home = () => {
     <div className="home-container">
       {/* Hero Section */}
       <div className="hero-section">
-        <video autoPlay loop muted playsInline className="video-background">
+        <video autoPlay loop muted playsInline className="video-background-home">
           <source src="/videos/v1.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -105,17 +105,17 @@ const Home = () => {
           className={`services-grid ${areCardsVisible ? 'visible' : ''}`}
         >
           <div className="service-card">
-            <div className="service-icon">🔧</div>
+            <div className="service-icon"><FaTools className="icon-serv" /></div>
             <h3>General Repairs</h3>
             <p>From brake checks to engine tune-ups, we handle it all.</p>
           </div>
           <div className="service-card">
-            <div className="service-icon">🚗</div>
+            <div className="service-icon"><FaCar className="icon-serv" /></div>
             <h3>Car Maintenance</h3>
             <p>Regular maintenance to keep your car running smoothly.</p>
           </div>
           <div className="service-card">
-            <div className="service-icon">🔋</div>
+            <div className="service-icon"><FaBatteryFull className="icon-serv" /></div>
             <h3>Battery Replacement</h3>
             <p>Get your car battery replaced quickly and efficiently.</p>
           </div>
@@ -161,7 +161,7 @@ const Home = () => {
       {/* Call-to-Action Section */}
       <div className="cta-section">
         <video autoPlay loop muted playsInline className="cta-video-background">
-          <source src="/videos/v2.mp4" type="video/mp4" />
+          <source src="/videos/v6.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="cta-content">

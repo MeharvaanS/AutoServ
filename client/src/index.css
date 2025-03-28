@@ -20,18 +20,18 @@ body, html {
 
 /* Customize scrollbar for WebKit browsers (Chrome, Safari, Edge) */
 body::-webkit-scrollbar {
-  width: 8px; /* Thin scrollbar width */
+  width: 4px; /* Thin scrollbar width */
 }
 
 body::-webkit-scrollbar-track {
-  background: #1e304e; /* Dark track color */
+  background: #000000; /* Dark track color */
   border-radius: 4px; /* Rounded corners */
 }
 
 body::-webkit-scrollbar-thumb {
   background: #b3b3b3; /* Orange thumb color */
   border-radius: 4px; /* Rounded corners */
-  border: 2px solid #141d2d; /* Add a border to make it pop */
+  border: 2px solid #000000; /* Add a border to make it pop */
 }
 
 body::-webkit-scrollbar-thumb:hover {
@@ -41,5 +41,5 @@ body::-webkit-scrollbar-thumb:hover {
 /* Customize scrollbar for Firefox */
 body {
   scrollbar-width: thin; /* Thin scrollbar */
-  scrollbar-color: #b3b3b3 #162031; /* Thumb and track color */
+  scrollbar-color: #b3b3b3 #000000; /* Thumb and track color */
 }
