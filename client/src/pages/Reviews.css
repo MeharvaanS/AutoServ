@@ -10,7 +10,7 @@
 
 .intro-box-review {
   text-align: center;
-  margin-right: 55px;
+  margin-right: 100px;
   margin-left: 40px;
   border-radius: 20px;
   z-index: 2;
@@ -248,5 +248,93 @@
     padding: 10px 100px;
     font-size: 1rem;
     white-space: nowrap;
+  }
+}
+
+/* Responsive Design for Phones - Vertical Stack */
+@media (max-width: 768px) {
+  .title-section {
+    flex-direction: column; /* Ensure vertical stacking */
+    height: auto;
+  }
+
+  .video-background-review {
+    width: 100%; /* Full width for video */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 100px; /* Adjust top margin */
+    margin-bottom: 20px; /* Space between video and text */
+  }
+
+  .intro-box-review {
+    margin: 0; /* Reset margins */
+    text-align: center; /* Center text */
+    padding: 0 20px; /* Add horizontal padding */
+  }
+
+  .review-title {
+    margin-top: 0 !important;
+    font-size: 1.8rem !important;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  #review-button-scroll {
+    padding: 10px 40px;
+    font-size: 1rem;
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+
+  /* Adjust form section for mobile */
+  .review-form-section {
+    padding: 1rem;
+    max-width: 90%;
+    margin-top: 30px; /* Add space above form */
+  }
+
+  #review-title {
+    font-size: 1.5rem;
+    margin-top: 30px;
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 0.9rem;
+  }
+
+  .star {
+    font-size: 1.5rem;
+  }
+
+  .submit-button {
+    padding: 10px 80px;
+    font-size: 1rem;
+  }
+}
+
+/* For very small screens (optional adjustments) */
+@media (max-width: 480px) {
+  .video-background-review {
+    margin-top: 170px; /* Smaller top margin */
+    margin-bottom: 70px;
+  }
+
+  .review-title {
+    font-size: 1.5rem !important;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  #review-button-scroll {
+    padding: 8px 30px;
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    padding: 8px 60px;
   }
 }

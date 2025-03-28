@@ -65,7 +65,7 @@ body, html {
     font-size: 2rem!important;
     font-weight: 500!important;
     font-family: 'Orbitron'!important;
-    margin-top: 190px!important;;
+    margin-top: 95px!important;;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
     animation: fadeIn 1.5s ease-in-out;
   }
@@ -228,6 +228,7 @@ body, html {
   }
   
   .scroll-button.left {
+    display: none;
     position: absolute;
     left: 10px; /* Adjust position as needed */
   }
@@ -280,20 +281,21 @@ body, html {
   }
   
   .scroll-button.right {
+    display: none;
     position: absolute;
     right: 10px; /* Adjust position as needed */
   }
   
   .testimonials-container {
     display: flex;
-    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-x: auto;
     gap: 30px;
-    padding-bottom: 20px; /* Add some padding at the bottom for scrollbar */
-    margin: 0 70px; /* Add left and right margins */
+    padding-bottom: 20px;
+    margin: 0 80px;
     padding-top: 15px;
-    padding-left: 15px;
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
-  }
+    /* padding-left: 15px; */
+    scrollbar-width: none;
+}
   
   /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
   .testimonials-container::-webkit-scrollbar {
@@ -404,7 +406,8 @@ body, html {
   /* Intro Box */
   .intro-box {
     text-align: center;
-    padding-right: 60px;
+    margin-right: 100px;
+    margin-top: 100px;
     border-radius: 20px;
     z-index: 2; /* Ensure content is above the video */
   }
@@ -478,6 +481,51 @@ body, html {
     .title{
       font-size: 1.8em!important;
     }
+
+    .video-background-home {
+      /* position: absolute; */
+      top: 0;
+      left: 0;
+      width: 100%;
+      margin-top: 175px;
+      height: 20%;
+      object-fit: cover;
+      z-index: 1;
+  }
+
+  .scroll-button.left {
+    position: absolute;
+    width:0.5px;
+    display: none;
+    height:45px;
+    left: 10px; /* Adjust position as needed */
+  }
+  
+  .scroll-button.right {
+    position: absolute;
+    display: none;
+    width:0.5px;
+    height:45px;
+    right: 10px; /* Adjust position as needed */
+  }
+
+  .testimonials-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding-bottom: 20px;
+    margin: 0 30px;
+    padding-top: 15px;
+    /* padding-left: 15px; */
+    scrollbar-width: none;
+}
+.intro-box {
+  text-align: center;
+  margin-right: 0px;
+  margin-top: 20px;
+  border-radius: 20px;
+  z-index: 2; /* Ensure content is above the video */
+}
   }
 
   

@@ -2,7 +2,7 @@
 
 .contact-container {
   margin: 0 auto;
-  background: linear-gradient(180deg, #000000, #0f161d); /* Dark metallic gradient */
+  background: linear-gradient(180deg, #000000, #000000); /* Dark metallic gradient */
   padding: 20px;
   font-family: Arial, sans-serif;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -65,6 +65,10 @@
 
 /* Stack vertically for phone/tablet view */
 @media (max-width: 768px) {
+  .video-background-contact {
+    height: 50%;
+  }
+
   .contact-columns {
     flex-direction: column; /* Stack vertically */
   }
