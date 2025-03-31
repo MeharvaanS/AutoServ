@@ -52,9 +52,9 @@
 }
 
 .logo-img {
-  width: 100px;
+  width: 85px;
   height: auto;
-  margin-right: 10px;
+  margin-right: 5px;
   transition: all 0.3s ease;
 }
 
@@ -203,12 +203,13 @@
   }
   
   .logo-img {
-    width: 90px;
+    width: 80px;
     padding-bottom: 12px;
   }
   
   .hamburger-menu {
     display: block;
+    margin-right: 4px;
   }
   
   .desktop-links {
