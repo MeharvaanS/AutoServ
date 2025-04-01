@@ -166,9 +166,9 @@ const Home = () => {
         </video>
         <div className="cta-content">
           <h2 className="section-title">Ready to Get Started?</h2>
-          <p>Contact me today to schedule your car repair or maintenance.</p>
+          <p>Contact us today to schedule your car repair or maintenance.</p>
           <button className="cta-button" onClick={handleContactClick}>
-            <FaEnvelope className="icon" />&nbsp;&nbsp;&nbsp;Contact me
+            <FaEnvelope className="icon" />&nbsp;&nbsp;&nbsp;Contact us
           </button>
         </div>
       </div>

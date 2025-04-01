@@ -124,10 +124,12 @@ body, html {
   }
 
   #review-title-home{
-    font-family: math;
-    color: rgb(255, 255, 255);
     font-size: 2rem;
-    margin-bottom: 30px;
+    font-weight: 500;
+    font-family: 'Orbitron';
+    color: #fff;
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   }
   
   .section-title {
@@ -482,6 +484,10 @@ body, html {
     }
     .title{
       font-size: 1.8em!important;
+    }
+
+    #review-title-home{
+      font-family: Orbitron;
     }
 
     .cta-video-background{

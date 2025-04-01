@@ -63,8 +63,8 @@ function Reviews() {
         </video>
         <div className="intro-box-review">
           <h1 className="review-title">Customer Reviews</h1>
-          <p className="subtitle">Share your experience with me</p>
-          <button onClick={scrollToReviewContent} id="review-button-scroll">Review my work</button>
+          <p className="subtitle">Share your experience with us</p>
+          <button onClick={scrollToReviewContent} id="review-button-scroll">Review our work</button>
         </div>
       </div>
 

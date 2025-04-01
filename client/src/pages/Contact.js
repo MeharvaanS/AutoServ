@@ -77,14 +77,14 @@ function Contact() {
         <div className="overlay"></div>
       </div>
 
-      <h1>Contact me</h1>
+      <h1>Contact us</h1>
       <div className="contact-columns">
         {/* Left Column - Contact Form (slides from left) */}
         <div 
           ref={formRef} 
           className={`contact-form ${animated ? 'animate-left' : ''}`}
         >
-          <h2>Email me!</h2>
+          <h2>Email us!</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name*</label>
