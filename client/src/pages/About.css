@@ -378,6 +378,14 @@
     flex-direction: column;
   }
 
+  .cta-content .section-title{
+    font-size:25px;
+  }
+
+  .cta-content p{
+    font-size: 17px;
+  }
+
   .intro-box-about {
     margin-top: 0px;
     padding-top:0px;
