@@ -127,7 +127,7 @@ const Home = () => {
 
       {/* Testimonials Section */}
       <div className="testimonials-section">
-        <h2 id="review-title-home">What Our Customers Say</h2>
+        <h2 id="review-title-home">Customer Reviews</h2>
         <div className="testimonials-scroll-wrapper">
           <button className="scroll-button left" onClick={() => scrollTestimonials(-300)}>
             <FaChevronLeft />
