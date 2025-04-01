@@ -49,7 +49,7 @@ const Navbar = () => {
           <div className="logo-wrapper">
             <h2 className="logo">
               <img src="/images/logo.png" alt="Mac's Shop Logo" className="logo-img" />
-              Mac's Shop
+              Mac Auto Comapany
             </h2>
           </div>
           <div className="hamburger-menu" onClick={toggleMobileMenu}>

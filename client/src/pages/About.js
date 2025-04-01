@@ -74,7 +74,7 @@ const About = () => {
           />
         </div>
         <div className="intro-box-about">
-          <h1 className="title">About Mac's Shop</h1>
+          <h1 className="title">Know about us</h1>
           <p className="subtitle">Where Precision Meets Passion</p>
           <button onClick={scrollToAboutContent} id="intro-button">
             Learn More
@@ -91,8 +91,8 @@ const About = () => {
             <h3>Who I Am</h3>
             <p className="about-details">
               {expandedSections.who 
-                ? "At Mac's Shop, I am more than just a car repair service. I am a passionate professional dedicated to providing the best automotive care. With years of experience and a commitment to excellence, I ensure your vehicle is in the best hands."
-                : "At Mac's Shop, I am more than just a car repair service..."}
+                ? "At Mac Auto Comapany, I am more than just a car repair service. I am a passionate professional dedicated to providing the best automotive care. With years of experience and a commitment to excellence, I ensure your vehicle is in the best hands."
+                : "At Mac Auto Comapany, I am more than just a car repair service..."}
               <button 
                 className="read-more-btn" 
                 onClick={() => toggleExpand('who')}

@@ -11,6 +11,7 @@ body, html {
   .video-background-home{
     /* position: absolute; */
     top: 0;
+    filter: brightness(1.5);
     left: 0;
     width: 65%;
     margin-top: 175px;
@@ -425,6 +426,7 @@ body, html {
   
   .cta-video-background {
     position: absolute;
+    filter:brightness(0.7);
     top: 0;
     left: 0;
     width: 100%;
@@ -482,13 +484,18 @@ body, html {
       font-size: 1.8em!important;
     }
 
+    .cta-video-background{
+      filter: brightness(0.3);
+    }
+
     .video-background-home {
       /* position: absolute; */
       top: 0;
       left: 0;
       width: 100%;
-      margin-top: 175px;
+      margin-top: 135px;
       height: 20%;
+      filter: brightness(1.7);
       object-fit: cover;
       z-index: 1;
   }

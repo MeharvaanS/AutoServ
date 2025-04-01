@@ -260,6 +260,7 @@
 
   .video-background-review {
     width: 100%; /* Full width for video */
+    margin-left:10px;
     height: auto; /* Maintain aspect ratio */
     margin-top: 100px; /* Adjust top margin */
     margin-bottom: 20px; /* Space between video and text */

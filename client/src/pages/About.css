@@ -352,9 +352,9 @@
 }
 
 .hero-image {
-  margin-top: 230px;
+  margin-top: 200px;
   width: 95%;
-  margin-left: 60px;
+  margin-left: 70px;
   height: 100%;
   /* object-fit: cover; */
   /* object-position: center; */
@@ -377,9 +377,14 @@
   .hero-section {
     flex-direction: column;
   }
+
+  .intro-box-about {
+    margin-top: 0px;
+    padding-top:0px;
+  }
   
   .hero-image-container {
-    height: 50vh;
+    height: 40vh;
     width: 90%;
   }
 
@@ -387,7 +392,7 @@
     margin-top: 138px;
     width: 92%;
     margin-left: 15px;
-    height: 87%;
+    height: 80%;
     /* object-fit: cover; */
     /* object-position: center; */
 }

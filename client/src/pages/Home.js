@@ -91,7 +91,7 @@ const Home = () => {
           Your browser does not support the video tag.
         </video>
         <div className="intro-box">
-          <h1 className="title">Welcome to Mac's</h1>
+          <h1 className="title">Welcome to M.A.C</h1>
           <p className="subtitle">Precision under the hood, trust at the wheel</p>
           <button onClick={scrollToServiceContent} id="intro-button">Get started</button>
         </div>
