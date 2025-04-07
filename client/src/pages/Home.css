@@ -661,6 +661,10 @@ body, html {
 .modal-description {
   font-size: 1rem;
 }
+
+.service-description{
+padding-left: 11px;
+}
 }
 
 
