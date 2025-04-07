@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope, FaCar, FaPaintRoller, FaTimes } from "react-icons/fa";
+import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope, FaCar, FaPaintRoller, FaTimes, FaSearch } from "react-icons/fa";
 import './Home.css';
 
 const Home = () => {
@@ -18,22 +18,25 @@ const Home = () => {
       id: 'repairs',
       title: 'General Repairs',
       icon: <FaTools className="icon-serv" />,
-      shortText: "Unexpected repairs can be costly and stressful, especially when maintena...",
       fullText: "Unexpected repairs can be costly and stressful, especially when maintenance is overlooked. At M.A.C, we've got you covered. Once an issue is identified, we ensure a swift, safe, and cost-effective repair process-guaranteed to provide the best value."
     },
     {
       id: 'maintenance',
       title: 'Car Maintenance',
       icon: <FaCar className="icon-serv" />,
-      shortText: "Attention to detail is essential at every stage of your vehicle's life to ensure...",
       fullText: "Attention to detail is essential at every stage of your vehicle's life to ensure it remains safe, smooth, and reliable. Regular maintenance helps prevent costly repairs and keeps your car performing at its best."
     },
     {
       id: 'bodyPaint',
       title: 'Body & Paint Repair',
       icon: <FaPaintRoller className="icon-serv" />,
-      shortText: "Driving in Canada can be tough-harsh winters, road salt, and unpredictable...",
       fullText: "Driving in Canada can be tough-harsh winters, road salt, and unpredictable drivers can take a toll on your vehicle's appearance. Whether it's rust damage or an unexpected fender bender on the 401, M.A.C has you covered. Our body and paint repair services will restore your vehicle to its original showroom shine."
+    },
+    {
+      id: 'details',
+      title: 'Attention To Details',
+      icon: <FaSearch className="icon-serv" />,
+      fullText: "At M.A.C, attention to detail is our priority. We go beyond maintenance and repairs by offering professional interior and exterior cleanup services. From routine servicing to keeping your vehicle looking its best, M.A.C is your one-stop shop for all your automotive needs!"
     }
   ];
 
@@ -137,25 +140,24 @@ const Home = () => {
       {/* Services Section */}
       <div className="services-section">
         <h2 id="services-title">Our Services</h2>
-        <div 
-          ref={servicesCardsRef} 
-          className={`services-grid ${areCardsVisible ? 'visible' : ''}`}
-        >
-          {services.map((service) => (
-            <div className="service-card" key={service.id}>
-              <div className="service-icon">{service.icon}</div>
-              <h3>{service.title}</h3>
-              <p className="service-description">
-                {service.shortText}
+        <div className="services-scroll-wrapper">
+          <div 
+            ref={servicesCardsRef} 
+            className={`services-grid ${areCardsVisible ? 'visible' : ''}`}
+          >
+            {services.map((service) => (
+              <div className="service-card" key={service.id}>
+                <div className="service-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
                 <button 
                   className="read-more-btn-home" 
                   onClick={() => openModal(service.id)}
                 >
-                  Read More <FaChevronRight className="read-more-icon" />
+                  See Details <FaChevronRight className="read-more-icon" />
                 </button>
-              </p>
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
         <button id="service-button" onClick={handleExploreClick}>
           <FaTools className="icon" />&nbsp;&nbsp;&nbsp;Find out more
@@ -220,6 +222,9 @@ const Home = () => {
             <div className="modal-icon">{selectedService.icon}</div>
             <h3 className="modal-title">{selectedService.title}</h3>
             <p className="modal-description">{selectedService.fullText}</p>
+            <button class="modal-button" onClick={handleExploreClick}>
+          <FaTools className="icon" />&nbsp;&nbsp;&nbsp;Find out more
+        </button>
           </div>
         </div>
       )}

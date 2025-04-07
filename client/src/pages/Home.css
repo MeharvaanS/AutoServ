@@ -1,573 +1,109 @@
 /* General styles */
 body, html {
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    overflow-x: hidden;
-  }
-
-  .video-background-home{
-    /* position: absolute; */
-    top: 0;
-    filter: brightness(1.5);
-    left: 0;
-    width: 65%;
-    margin-top: 175px;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;      
-  }
-
-  .services-grid {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    display: flex;
-    margin-bottom: 30px;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
-  }
-
-  .services-grid.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* When scrolling up and section is not visible */
-  .services-grid:not(.visible) {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-  }
-  
-  .home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(180deg, #000000, #1e304e);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Hero Section */
-  .hero-section {
-    display: flex;
-    background-color: #000000;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-  }
-  
-  .title {
-    font-size: 2rem!important;
-    font-weight: 500!important;
-    font-family: 'Orbitron'!important;
-    margin-top: 95px!important;;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-    animation: fadeIn 1.5s ease-in-out;
-  }
-  
-  .subtitle {
-    font-size: 1.1rem!important;
-    color: #e0e0e0d1!important;
-    margin-bottom: 20px!important;
-    animation: slideUp 1.5s ease-in-out;
-  }
-  
-  .cta-button {
-    background: #e67e22; /* Orange background for active link */
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
-    padding: 12px 50px;
-    font-size: 1.2rem;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  #intro-button {
-    margin-top: 10px;
-    margin-bottom: 50px;
-    background: #0e152500; /* Orange background for active link */
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
-    padding: 10px 60px;
-    font-size: 1.2rem;
-    color: #fff;
-    border: double;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: slideUp 1.5s ease-in-out;
-  }
-
-  #intro-button:hover {
-    background-color: #0f161d3e;
-    transform: scale(1.1);
-  }
-  
-  .cta-button:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Services Section */
-  .services-section {
-    padding: 80px 20px;
-    padding-top: 23px;
-    background: linear-gradient(180deg, #000000, #010a10e8);
-    width: 100%;
-    text-align: center;
-  }
-
-  #review-title-home{
-    font-size: 2rem;
-    font-weight: 500;
-    font-family: 'Orbitron';
-    color: #fff;
-    margin-bottom: 60px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .section-title {
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  }
-
-  .review-rating{
-    font-size: 1.5rem!important;
-  }
-
-  .review-date {
-    font-size: 0.8rem!important;
-    color: rgb(156, 156, 156)!important;
-   
-  }
-  
-  .services-grid {
-    display: flex;
-    margin-bottom: 30px;
-    justify-content: center;
-    gap: 80px;
-    flex-wrap: wrap;
-  }
-  
-  .service-card {
-    background: rgb(255 255 255 / 3%);
-    padding: 20px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgb(0 0 0 / 5%);
-    width: 275px;
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-
-  .icon-serv{
-    color: #2e5172bf;
-  }
-  
-  .service-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
-  }
-  
-  .service-card h3 {
-    font-size: 1.5rem;
-    font-family: math;
-    font-weight: 500;
-    color: #fff;
-    margin-bottom: 10px;
-  }
-  
-  .service-card p {
-    font-size: 0.9rem;
-    font-family: sans-serif;
-    text-align: left;
-    color: #ffffffc9;
-  }
-  
- /* Testimonials Section */
-.testimonials-section {
-    padding: 60px 20px;
-    background: linear-gradient(360deg, #000000, #020b11);
-    width: 100%;
-    text-align: center;
-    overflow: hidden; /* Hide overflow to prevent scrollbar from showing */
-  }
-
-  /* Testimonials Scroll Wrapper */
-.testimonials-scroll-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Scroll Buttons */
-  .scroll-button {
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-    border: none;
-    border-radius: 50%; /* Circular buttons */
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: linear-gradient(180deg, #03102fe0, #132940);
-    font-size: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: background 0.3s ease, transform 0.3s ease;
-    z-index: 2; /* Ensure buttons are above the testimonials */
-  }
-  
-  .scroll-button:hover {
-    background: rgba(255, 255, 255, 1); /* Solid background on hover */
-    transform: scale(1.1); /* Slightly enlarge on hover */
-  }
-  
-  .scroll-button.left {
-    display: none;
-    position: absolute;
-    left: 10px; /* Adjust position as needed */
-  }
-
-  #review-button{
-    background: #172333;
-    transform: translateY(-3px); /* Lift effect */
-    padding: 10px 60px;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    color: #fff;
-    border: double;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  #service-button:hover{
-    transform: scale(1.05);
-    background: #15335c5c;
-  }
-
-  #service-button{
-    transform: translateY(-3px); /* Lift effect */
-    margin-bottom: -16px;
-    font-size: large;
-    padding: 10px 60px;
-    margin-top: 50px;
-    font-size: 1.2rem;
-    color: #fff;
-    border: double;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: #5c597f3d;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
-  }
-
-  #services-title{
-    font-size: 2rem;
-    font-weight: 500;
-    font-family: 'Orbitron';
-    color: #fff;
-    margin-bottom: 60px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  }
-
-  #review-button:hover{
-    transform: scale(1.05);
-    background: #0d1b2d;
-  }
-  
-  .scroll-button.right {
-    display: none;
-    position: absolute;
-    right: 10px; /* Adjust position as needed */
-  }
-  
-  .testimonials-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 30px;
-    padding-bottom: 20px;
-    margin: 0 80px;
-    padding-top: 15px;
-    /* padding-left: 15px; */
-    scrollbar-width: none;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
 }
-  
-  /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
-  .testimonials-container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .testimonials-grid {
-    display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping to the next line */
-    gap: 30px;
-  }
-  
-  .testimonial-card {
-    background: rgb(14 20 25);
-    padding: 20px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(67, 66, 66, 0.148);
-    min-width: 300px; /* Set a minimum width for each card */
-    text-align: center;
-    transition: transform 0.3s ease;
-    flex-shrink: 0; /* Prevent cards from shrinking */
-  }
-  
-  .testimonial-card p {
-    font-size: 1rem;
-    font-family: serif;
-    color: whitesmoke;
-    margin-bottom: 10px;
-  }
-  
-  .customer-name {
-    font-size: 0.9rem;
-    color: #fff;
-    font-style: italic;
-  }
-  
-  /* Call-to-Action Section */
-  .cta-section {
-    padding: 80px 20px;
-    text-align: center;
-  }
-  
-  .cta-section .section-title {
-    margin-bottom: 20px;
-  }
-  
-  .cta-section p {
-    font-size: 1.2rem;
-    color: #e0e0e0;
-    margin-bottom: 30px;
-  }
-  
- 
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideUp {
-    from {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes moveBackground {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-200px);
-    }
-  }
-  /* Hero Section with Video Background */
-.hero-section {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden; /* Ensure video doesn't overflow */
-  }
-  
-  /* Video Background */
-  .video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 140%;
-    object-fit: cover; /* Ensures video covers the entire section */
-    z-index: 1; /* Place video behind the content */
-    background-color: #000000;
-  }
-  
-  /* Intro Box */
-  .intro-box {
-    text-align: center;
-    margin-right: 100px;
-    margin-top: 100px;
-    border-radius: 20px;
-    z-index: 2; /* Ensure content is above the video */
-  }
-  /* Call-to-Action Section */
-.cta-section {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px; /* Adjust height as needed */
-    width: 100%;
-    overflow: hidden;
-    background: rgba(0, 0, 0, 0.5); /* Overlay to darken the video */
-  }
-  
-  .cta-video-background {
-    position: absolute;
-    filter:brightness(0.7);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures video covers the entire section */
-    z-index: 1; /* Place video behind the content */
-  }
-  
-  .cta-content {
-    position: relative;
-    z-index: 2; /* Ensure content is above the video */
-    text-align: center;
-    color: #fff;
-    padding: 20px;
-  }
-  
-  .cta-content .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .cta-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .cta-button {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding: 10px 60px;
-    background: #0e152500; /* Orange background for active link */
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
-    font-size: 1.2rem;
-    color: #fff;
-    border: double;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
 
-  /* Service Modal Styles */
-.service-modal-overlay {
-  position: fixed;
+.video-background-home{
+  /* position: absolute; */
   top: 0;
+  filter: brightness(1.5);
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  backdrop-filter: blur(5px);
+  width: 65%;
+  margin-top: 175px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;      
 }
 
-.service-modal {
+/* Services Section */
+.services-section {
+  padding: 80px 20px;
+  padding-top: 23px;
   background: linear-gradient(180deg, #000000, #010a10e8);
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 600px;
-  width: 90%;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.services-scroll-wrapper {
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: modalFadeIn 0.3s ease-out;
+  width: 100%;
+  padding: 20px 0;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.modal-close-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  cursor: pointer;
+.services-grid.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card {
+  background: rgb(255 255 255 / 3%);
+  padding: 30px 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 5%);
+  text-align: center;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 265px;
 }
 
-.modal-close-btn:hover {
-  transform: rotate(90deg);
+.review-rating{
+  font-size: 1.4rem!important;
 }
 
-.modal-icon {
+.service-icon {
   font-size: 3rem;
+  margin-bottom: 15px;
   color: #2e5172bf;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
-.modal-title {
-  font-size: 1.8rem;
-  font-family: 'Orbitron';
-  color: #fff;
+.service-card h3 {
+  font-size: 1.3rem;
+  font-family: math;
+  font-weight: 500;
+  color: #ffffffed;
   margin-bottom: 20px;
-  text-align: center;
-}
-
-.modal-description {
-  font-size: 1.1rem;
-  color: #e0e0e0;
-  line-height: 1.8;
-  text-align: left;
 }
 
 /* Read More Button */
 .read-more-btn-home {
   background: transparent;
-  border: none;
+  border: 1px solid #305370;
   color: #305370;
   cursor: pointer;
   font-size: 0.9rem;
   display: inline-flex;
-  margin-left: 80px;
   align-items: center;
-  margin-top: 17px;
-  padding: 5px 10px;
+  padding: 8px 15px;
   border-radius: 5px;
   transition: all 0.3s ease;
 }
 
 .read-more-btn-home:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.1);
+  background: #305370;
 }
 
 .read-more-icon {
@@ -575,97 +111,640 @@ body, html {
   font-size: 0.8rem;
 }
 
-.service-description {
+.services-scroll-button:hover {
+background: rgba(255, 255, 255, 1);
+transform: translateY(-50%) scale(1.1);
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #000000, #1e304e);
   position: relative;
-  padding-right: 20px;
+  overflow: hidden;
 }
 
-  #cta-button:hover {
-    background-color: #0f161d3e;
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 768px) {
-    .scroll-button{
-      display: grid;
-      margin-top: 20px;
-      color: #013262;
-    }
-    .title{
-      font-size: 1.8em!important;
-    }
-
-    #review-title-home{
-      font-family: Orbitron;
-      font-size: 1.7rem;
-    }
-
-    .cta-video-background{
-      filter: brightness(0.3);
-    }
-
-    .video-background-home {
-      /* position: absolute; */
-      top: 0;
-      left: 0;
-      width: 100%;
-      margin-top: 100px;
-      height: 20%;
-      filter: brightness(1.7);
-      object-fit: cover;
-      z-index: 1;
-  }
-
-  .scroll-button.left {
-    position: absolute;
-    width:0.5px;
-    display: none;
-    height:45px;
-    left: 10px; /* Adjust position as needed */
-  }
-  
-  .scroll-button.right {
-    position: absolute;
-    display: none;
-    width:0.5px;
-    height:45px;
-    right: 10px; /* Adjust position as needed */
-  }
-
-  .testimonials-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 30px;
-    padding-bottom: 20px;
-    margin: 0 30px;
-    padding-top: 15px;
-    /* padding-left: 15px; */
-    scrollbar-width: none;
+/* Hero Section */
+.hero-section {
+  display: flex;
+  background-color: #000000;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
 }
+
+.title {
+  font-size: 2rem!important;
+  font-weight: 500!important;
+  font-family: 'Orbitron'!important;
+  margin-top: 95px!important;;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.subtitle {
+  font-size: 1.1rem!important;
+  color: #e0e0e0d1!important;
+  margin-bottom: 20px!important;
+  animation: slideUp 1.5s ease-in-out;
+}
+
+.cta-button {
+  background: #e67e22; /* Orange background for active link */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
+  padding: 12px 50px;
+  font-size: 1.2rem;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#intro-button {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  background: #0e152500; /* Orange background for active link */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
+  padding: 10px 60px;
+  font-size: 1.2rem;
+  color: #fff;
+  border: double;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: slideUp 1.5s ease-in-out;
+}
+
+#intro-button:hover {
+  background-color: #0f161d3e;
+  transform: scale(1.1);
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+}
+
+.icon-serv{
+  color: #2e5172bf;
+}
+
+.service-icon {
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  font-family: math;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  font-family: sans-serif;
+  color: #ffffffc9;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 60px 20px;
+  background: linear-gradient(360deg, #000000, #020b11);
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Testimonials Scroll Wrapper */
+.testimonials-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scroll Buttons */
+.scroll-button {
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  border: none;
+  border-radius: 50%; /* Circular buttons */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: linear-gradient(180deg, #03102fe0, #132940);
+  font-size: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 2; /* Ensure buttons are above the testimonials */
+}
+
+.scroll-button:hover {
+  background: rgba(255, 255, 255, 1); /* Solid background on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.scroll-button.left {
+  display: none;
+  position: absolute;
+  left: 10px; /* Adjust position as needed */
+}
+
+#review-button{
+  background: #172333;
+  transform: translateY(-3px); /* Lift effect */
+  padding: 10px 60px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #fff;
+  border: double;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#service-button:hover{
+  transform: scale(1.05);
+  background: #15335c5c;
+}
+
+.modal-button{
+  transform: translateY(-3px); /* Lift effect */
+  margin-bottom: 5px;
+  font-size: large;
+  justify-content: center;
+  padding: 10px 60px;
+  margin-top: 25px;
+  font-size: 1.2rem;
+  color: #fff;
+  border: double;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #5c597f3d;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
+}
+
+.modal-button:hover{
+  transform: scale(1.05);
+  background: #15335c5c;
+}
+
+#service-button{
+  transform: translateY(-3px); /* Lift effect */
+  margin-bottom: -16px;
+  font-size: large;
+  padding: 10px 60px;
+  margin-top: 50px;
+  font-size: 1.2rem;
+  color: #fff;
+  border: double;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #5c597f3d;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
+}
+
+
+
+#services-title{
+  font-size: 2rem;
+  font-weight: 500;
+  font-family: 'Orbitron';
+  color: #fff;
+  margin-bottom: 60px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+#review-button:hover{
+  transform: scale(1.05);
+  background: #0d1b2d;
+}
+
+.scroll-button.right {
+  display: none;
+  position: absolute;
+  right: 10px; /* Adjust position as needed */
+}
+
+.testimonials-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  padding-bottom: 20px;
+  margin: 0 80px;
+  padding-top: 15px;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.testimonials-container::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials-grid {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping to the next line */
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: rgb(14 20 25);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(67, 66, 66, 0.148);
+  min-width: 300px; /* Set a minimum width for each card */
+  text-align: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0; /* Prevent cards from shrinking */
+}
+
+.testimonial-card p {
+  font-size: 1rem;
+  font-family: serif;
+  color: whitesmoke;
+  margin-bottom: 10px;
+}
+
+.customer-name {
+  font-size: 0.9rem;
+  color: #fff;
+  font-style: italic;
+}
+
+/* Call-to-Action Section */
+.cta-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cta-section .section-title {
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-bottom: 30px;
+}
+
+
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveBackground {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-200px);
+  }
+}
+/* Hero Section with Video Background */
+.hero-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden; /* Ensure video doesn't overflow */
+}
+
+/* Video Background */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  object-fit: cover; /* Ensures video covers the entire section */
+  z-index: 1; /* Place video behind the content */
+  background-color: #000000;
+}
+
+/* Intro Box */
 .intro-box {
   text-align: center;
-  margin-right: 0px;
-  margin-top: 20px;
+  margin-right: 100px;
+  margin-top: 100px;
   border-radius: 20px;
   z-index: 2; /* Ensure content is above the video */
 }
-.service-modal {
+/* Call-to-Action Section */
+.cta-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust height as needed */
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5); /* Overlay to darken the video */
+}
+
+.cta-video-background {
+  position: absolute;
+  filter:brightness(0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video covers the entire section */
+  z-index: 1; /* Place video behind the content */
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2; /* Ensure content is above the video */
+  text-align: center;
+  color: #fff;
   padding: 20px;
-  width: 280px;
+}
+
+.cta-content .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 10px 60px;
+  background: #0e152500; /* Orange background for active link */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
+  font-size: 1.2rem;
+  color: #fff;
+  border: double;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Service Modal Styles */
+.service-modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.8);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+backdrop-filter: blur(5px);
+}
+
+
+.service-modal {
+background: linear-gradient(180deg, #000000, #010a10e8);
+padding: 30px;
+text-align: center;
+border-radius: 15px;
+max-width: 600px;
+width: 90%;
+position: relative;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+border: 1px solid rgba(255, 255, 255, 0.1);
+animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+from {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+
+.modal-close-btn {
+position: absolute;
+top: 15px;
+right: 15px;
+background: transparent;
+border: none;
+color: #fff;
+font-size: 1.5rem;
+cursor: pointer;
+transition: transform 0.3s ease;
+}
+
+.modal-close-btn:hover {
+transform: rotate(90deg);
+}
+
+.modal-icon {
+font-size: 3rem;
+color: #2e5172bf;
+margin-bottom: 20px;
+text-align: center;
 }
 
 .modal-title {
-  font-size: 1.5rem;
+font-size: 1.8rem;
+font-family: 'Orbitron';
+color: #fff;
+margin-bottom: 20px;
+text-align: center;
 }
 
 .modal-description {
-  font-size: 1rem;
+font-size: 1.1rem;
+color: #e0e0e0;
+margin-top: 30px;
+line-height: 1.8;
+text-align: center;
+}
+
+
+/* Read More Button */
+.read-more-btn-home {
+background: transparent;
+border: none;
+color: #305370;
+cursor: pointer;
+font-size: 0.9rem;
+display: inline-flex;
+align-items: center;
+margin-top: 17px;
+padding: 5px 10px;
+border-radius: 5px;
+transition: all 0.3s ease;
+}
+
+.read-more-btn-home:hover {
+color: #fff;
+background: rgba(255, 255, 255, 0.1);
+}
+
+.read-more-icon {
+margin-left: 6px;
+font-size: 1rem;
+}
+
+.service-description {
+position: relative;
+}
+
+#cta-button:hover {
+  background-color: #0f161d3e;
+  transform: scale(1.1);
+}
+
+#review-title-home{
+font-size: 2rem;
+font-weight: 500;
+font-family: 'Orbitron';
+color: #fff;
+margin-bottom: 60px;
+text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+
+  .services-grid {
+    flex-direction: column; /* Stack cards vertically */
+    overflow-x: visible; /* Disable horizontal scrolling */
+    gap: 50px; /* Add vertical spacing */
+    align-items: center; /* Center cards */
+    padding: 20px 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .service-card {
+    width: 90%; /* Make cards wider on mobile */
+    margin: 0 auto; /* Center cards */
+  }
+
+  .services-scroll-button {
+    display: none; /* Hide scroll buttons on mobile */
+  }
+
+  .services-grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+    gap:50px;
+  }
+
+  .title{
+    font-size: 1.8em!important;
+  }
+
+  #review-title-home{
+    font-family: Orbitron;
+    font-size: 1.7rem;
+  }
+
+  .cta-video-background{
+    filter: brightness(0.3);
+  }
+
+  .modal-button{
+    font-size: 1rem;
+    padding-right:2px;
+    padding-left:2px;
+    width: 220px;
+    height: 50px;
+  }
+
+  .video-background-home {
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 100px;
+    height: 20%;
+    filter: brightness(1.7);
+    object-fit: cover;
+    z-index: 1;
+}
+
+.read-more-btn-home{
+  text-align: center;
+}
+
+.testimonials-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  padding-bottom: 20px;
+  margin: 0 30px;
+  padding-top: 15px;
+  /* padding-left: 15px; */
+  scrollbar-width: none;
+}
+.intro-box {
+text-align: center;
+margin-right: 0px;
+margin-top: 20px;
+border-radius: 20px;
+z-index: 2; /* Ensure content is above the video */
+}
+.service-modal {
+padding: 20px;
+width: 280px;
+}
+
+.modal-title {
+font-size: 1.5rem;
+}
+
+.modal-description {
+font-size: 1rem;
 }
 
 .service-description{
 padding-left: 11px;
 }
+
+.services-scroll-button {
+display: none; /* Hide scroll buttons on mobile */
 }
 
+.services-grid {
+gap: 20px; /* Reduce gap on mobile */
+padding: 10px 0;
+}
 
-  
+.service-card {
+width: 250px; /* Slightly smaller cards on mobile */
+}
+}

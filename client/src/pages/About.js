@@ -20,11 +20,34 @@ const About = () => {
   });
   const [speakingSection, setSpeakingSection] = useState(null);
   const [speechSynthesis, setSpeechSynthesis] = useState(null);
+  const [voicesLoaded, setVoicesLoaded] = useState(false);
 
   useEffect(() => {
     // Initialize speech synthesis
     if ('speechSynthesis' in window) {
-      setSpeechSynthesis(window.speechSynthesis);
+      const synth = window.speechSynthesis;
+      setSpeechSynthesis(synth);
+      
+      // Load voices when they become available
+      const loadVoices = () => {
+        const voices = synth.getVoices();
+        setVoicesLoaded(true);
+        console.log('Available voices:', voices);
+      };
+      
+      synth.onvoiceschanged = loadVoices;
+      
+      // Initial load attempt
+      if (synth.getVoices().length > 0) {
+        loadVoices();
+      }
+      
+      return () => {
+        synth.onvoiceschanged = null;
+        if (synth.speaking) {
+          synth.cancel();
+        }
+      };
     }
   }, []);
 
@@ -47,7 +70,7 @@ const About = () => {
   };
 
   const toggleSpeech = (section) => {
-    if (speechSynthesis) {
+    if (speechSynthesis && voicesLoaded) {
       // Stop any currently speaking
       if (speechSynthesis.speaking) {
         speechSynthesis.cancel();
@@ -59,7 +82,7 @@ const About = () => {
         return;
       }
       
-      // Get the FULL expanded text to speak regardless of current state
+      // Get the text to speak
       let textToSpeak = '';
       switch (section) {
         case 'who':
@@ -75,8 +98,71 @@ const About = () => {
           return;
       }
       
-      // Create and speak the utterance
+      // Create the utterance
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      
+      // Get available voices
+      const voices = speechSynthesis.getVoices();
+      
+      // List of known male voices across different browsers/platforms
+      const maleVoices = [
+        'Microsoft David',      // Edge on Windows
+        'Google US English Male', // Chrome
+        'Alex',                 // Safari on Mac
+        'Daniel',               // Chrome on Mac
+        'Fred',                 // Some systems
+        'Microsoft Mark',       // Edge
+        'Google UK English Male',
+        'Google Australia English Male'
+      ];
+      
+      // Try to find a male voice
+      let selectedVoice = null;
+      
+      // First try exact matches from our male voices list
+      for (const name of maleVoices) {
+        const voice = voices.find(v => v.name === name);
+        if (voice) {
+          selectedVoice = voice;
+          break;
+        }
+      }
+      
+      // If no exact match, try partial matches
+      if (!selectedVoice) {
+        for (const name of maleVoices) {
+          const voice = voices.find(v => v.name.includes(name));
+          if (voice) {
+            selectedVoice = voice;
+            break;
+          }
+        }
+      }
+      
+      // If still no male voice, try to find any voice that sounds male
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => 
+          v.name.toLowerCase().includes('male') || 
+          v.name.includes('David') ||
+          v.name.includes('Daniel') ||
+          v.name.includes('Mark')
+        );
+      }
+      
+      // Final fallback to any English voice
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.lang.includes('en')) || voices[0];
+      }
+      
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
+      }
+      
+      // Adjust speech parameters for natural male voice
+      utterance.rate = 1.0;      // Normal speed
+      utterance.pitch = 0.9;     // Slightly lower pitch for male voice
+      utterance.volume = 1.0;    // Full volume
+      
       utterance.onend = () => setSpeakingSection(null);
       utterance.onerror = () => setSpeakingSection(null);
       
@@ -109,7 +195,6 @@ const About = () => {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      // Clean up speech synthesis when component unmounts
       if (speechSynthesis && speechSynthesis.speaking) {
         speechSynthesis.cancel();
       }

@@ -7,10 +7,12 @@ import Services from "./pages/Services";
 import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
 import VideoPreloader from './components/VideoPreloader';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <VideoPreloader />
       <Navbar />
       <Routes>
