@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope, FaCar, FaBatteryFull } from "react-icons/fa";
+import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope, FaCar, FaPaintRoller, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import './Home.css';
 
 const Home = () => {
@@ -9,6 +9,11 @@ const Home = () => {
   const [reviews, setReviews] = useState([]);
   const servicesCardsRef = useRef(null);
   const [areCardsVisible, setAreCardsVisible] = useState(false);
+  const [expandedServices, setExpandedServices] = useState({
+    repairs: false,
+    maintenance: false,
+    bodyPaint: false
+  });
 
   // Set up intersection observer for services cards
   useEffect(() => {
@@ -70,6 +75,13 @@ const Home = () => {
     return fullStars + emptyStars;
   };
 
+  const toggleServiceExpand = (service) => {
+    setExpandedServices(prev => ({
+      ...prev,
+      [service]: !prev[service]
+    }));
+  };
+
   const handleExploreClick = () => {
     navigate("/services");
   };
@@ -107,17 +119,47 @@ const Home = () => {
           <div className="service-card">
             <div className="service-icon"><FaTools className="icon-serv" /></div>
             <h3>General Repairs</h3>
-            <p>From brake checks to engine tune-ups, we handle it all.</p>
+            <p className="service-description">
+              {expandedServices.repairs 
+                ? "Unexpected repairs can be costly and stressful, especially when maintenance is overlooked. At M.A.C, we've got you covered. Once an issue is identified, we ensure a swift, safe, and cost-effective repair process-guaranteed to provide the best value."
+                : "Unexpected repairs can be costly and stressful, especially when..."}
+              <button 
+                className="read-more-btn" 
+                onClick={() => toggleServiceExpand('repairs')}
+              >
+                {expandedServices.repairs ? <FaChevronUp /> : <FaChevronDown />}
+              </button>
+            </p>
           </div>
           <div className="service-card">
             <div className="service-icon"><FaCar className="icon-serv" /></div>
             <h3>Car Maintenance</h3>
-            <p>Regular maintenance to keep your car running smoothly.</p>
+            <p className="service-description">
+              {expandedServices.maintenance
+                ? "Attention to detail is essential at every stage of your vehicle's life to ensure it remains safe, smooth, and reliable. Regular maintenance helps prevent costly repairs and keeps your car performing at its best."
+                : "Attention to detail is essential at every stage of your vehicle's..."}
+              <button 
+                className="read-more-btn" 
+                onClick={() => toggleServiceExpand('maintenance')}
+              >
+                {expandedServices.maintenance ? <FaChevronUp /> : <FaChevronDown />}
+              </button>
+            </p>
           </div>
           <div className="service-card">
-            <div className="service-icon"><FaBatteryFull className="icon-serv" /></div>
-            <h3>Battery Replacement</h3>
-            <p>Get your car battery replaced quickly and efficiently.</p>
+            <div className="service-icon"><FaPaintRoller className="icon-serv" /></div>
+            <h3>Body & Paint Repair</h3>
+            <p className="service-description">
+              {expandedServices.bodyPaint
+                ? "Driving in Canada can be tough-harsh winters, road salt, and unpredictable drivers can take a toll on your vehicle's appearance. Whether it's rust damage or an unexpected fender bender on the 401, M.A.C has you covered. Our body and paint repair services will restore your vehicle to its original showroom shine."
+                : "Driving in Canada can be tough-harsh winters, road salt, and..."}
+              <button 
+                className="read-more-btn" 
+                onClick={() => toggleServiceExpand('bodyPaint')}
+              >
+                {expandedServices.bodyPaint ? <FaChevronUp /> : <FaChevronDown />}
+              </button>
+            </p>
           </div>
         </div>
         <button id="service-button" onClick={handleExploreClick}>
