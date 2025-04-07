@@ -186,8 +186,10 @@ body, html {
   }
   
   .service-card p {
-    font-size: 1rem;
-    color: #e0e0e0c9;
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    text-align: left;
+    color: #ffffffc9;
   }
   
  /* Testimonials Section */
@@ -471,6 +473,113 @@ body, html {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
+  /* Service Modal Styles */
+.service-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.service-modal {
+  background: linear-gradient(180deg, #000000, #010a10e8);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.modal-close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.modal-icon {
+  font-size: 3rem;
+  color: #2e5172bf;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  font-family: 'Orbitron';
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-description {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  line-height: 1.8;
+  text-align: left;
+}
+
+/* Read More Button */
+.read-more-btn-home {
+  background: transparent;
+  border: none;
+  color: #305370;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  margin-left: 80px;
+  align-items: center;
+  margin-top: 17px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.read-more-btn-home:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.read-more-icon {
+  margin-left: 5px;
+  font-size: 0.8rem;
+}
+
+.service-description {
+  position: relative;
+  padding-right: 20px;
+}
+
   #cta-button:hover {
     background-color: #0f161d3e;
     transform: scale(1.1);
@@ -540,6 +649,19 @@ body, html {
   border-radius: 20px;
   z-index: 2; /* Ensure content is above the video */
 }
-  }
+.service-modal {
+  padding: 20px;
+  width: 280px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+}
+
+.modal-description {
+  font-size: 1rem;
+}
+}
+
 
   

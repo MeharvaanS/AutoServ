@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope, FaCar, FaPaintRoller, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronLeft, FaStar, FaTools, FaChevronRight, FaEnvelope, FaCar, FaPaintRoller, FaTimes } from "react-icons/fa";
 import './Home.css';
 
 const Home = () => {
@@ -9,11 +9,33 @@ const Home = () => {
   const [reviews, setReviews] = useState([]);
   const servicesCardsRef = useRef(null);
   const [areCardsVisible, setAreCardsVisible] = useState(false);
-  const [expandedServices, setExpandedServices] = useState({
-    repairs: false,
-    maintenance: false,
-    bodyPaint: false
-  });
+  const [selectedService, setSelectedService] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Service data
+  const services = [
+    {
+      id: 'repairs',
+      title: 'General Repairs',
+      icon: <FaTools className="icon-serv" />,
+      shortText: "Unexpected repairs can be costly and stressful, especially when maintena...",
+      fullText: "Unexpected repairs can be costly and stressful, especially when maintenance is overlooked. At M.A.C, we've got you covered. Once an issue is identified, we ensure a swift, safe, and cost-effective repair process-guaranteed to provide the best value."
+    },
+    {
+      id: 'maintenance',
+      title: 'Car Maintenance',
+      icon: <FaCar className="icon-serv" />,
+      shortText: "Attention to detail is essential at every stage of your vehicle's life to ensure...",
+      fullText: "Attention to detail is essential at every stage of your vehicle's life to ensure it remains safe, smooth, and reliable. Regular maintenance helps prevent costly repairs and keeps your car performing at its best."
+    },
+    {
+      id: 'bodyPaint',
+      title: 'Body & Paint Repair',
+      icon: <FaPaintRoller className="icon-serv" />,
+      shortText: "Driving in Canada can be tough-harsh winters, road salt, and unpredictable...",
+      fullText: "Driving in Canada can be tough-harsh winters, road salt, and unpredictable drivers can take a toll on your vehicle's appearance. Whether it's rust damage or an unexpected fender bender on the 401, M.A.C has you covered. Our body and paint repair services will restore your vehicle to its original showroom shine."
+    }
+  ];
 
   // Set up intersection observer for services cards
   useEffect(() => {
@@ -75,11 +97,14 @@ const Home = () => {
     return fullStars + emptyStars;
   };
 
-  const toggleServiceExpand = (service) => {
-    setExpandedServices(prev => ({
-      ...prev,
-      [service]: !prev[service]
-    }));
+  const openModal = (serviceId) => {
+    setSelectedService(services.find(service => service.id === serviceId));
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedService(null);
   };
 
   const handleExploreClick = () => {
@@ -116,51 +141,21 @@ const Home = () => {
           ref={servicesCardsRef} 
           className={`services-grid ${areCardsVisible ? 'visible' : ''}`}
         >
-          <div className="service-card">
-            <div className="service-icon"><FaTools className="icon-serv" /></div>
-            <h3>General Repairs</h3>
-            <p className="service-description">
-              {expandedServices.repairs 
-                ? "Unexpected repairs can be costly and stressful, especially when maintenance is overlooked. At M.A.C, we've got you covered. Once an issue is identified, we ensure a swift, safe, and cost-effective repair process-guaranteed to provide the best value."
-                : "Unexpected repairs can be costly and stressful, especially when..."}
-              <button 
-                className="read-more-btn" 
-                onClick={() => toggleServiceExpand('repairs')}
-              >
-                {expandedServices.repairs ? <FaChevronUp /> : <FaChevronDown />}
-              </button>
-            </p>
-          </div>
-          <div className="service-card">
-            <div className="service-icon"><FaCar className="icon-serv" /></div>
-            <h3>Car Maintenance</h3>
-            <p className="service-description">
-              {expandedServices.maintenance
-                ? "Attention to detail is essential at every stage of your vehicle's life to ensure it remains safe, smooth, and reliable. Regular maintenance helps prevent costly repairs and keeps your car performing at its best."
-                : "Attention to detail is essential at every stage of your vehicle's..."}
-              <button 
-                className="read-more-btn" 
-                onClick={() => toggleServiceExpand('maintenance')}
-              >
-                {expandedServices.maintenance ? <FaChevronUp /> : <FaChevronDown />}
-              </button>
-            </p>
-          </div>
-          <div className="service-card">
-            <div className="service-icon"><FaPaintRoller className="icon-serv" /></div>
-            <h3>Body & Paint Repair</h3>
-            <p className="service-description">
-              {expandedServices.bodyPaint
-                ? "Driving in Canada can be tough-harsh winters, road salt, and unpredictable drivers can take a toll on your vehicle's appearance. Whether it's rust damage or an unexpected fender bender on the 401, M.A.C has you covered. Our body and paint repair services will restore your vehicle to its original showroom shine."
-                : "Driving in Canada can be tough-harsh winters, road salt, and..."}
-              <button 
-                className="read-more-btn" 
-                onClick={() => toggleServiceExpand('bodyPaint')}
-              >
-                {expandedServices.bodyPaint ? <FaChevronUp /> : <FaChevronDown />}
-              </button>
-            </p>
-          </div>
+          {services.map((service) => (
+            <div className="service-card" key={service.id}>
+              <div className="service-icon">{service.icon}</div>
+              <h3>{service.title}</h3>
+              <p className="service-description">
+                {service.shortText}
+                <button 
+                  className="read-more-btn-home" 
+                  onClick={() => openModal(service.id)}
+                >
+                  Read More <FaChevronRight className="read-more-icon" />
+                </button>
+              </p>
+            </div>
+          ))}
         </div>
         <button id="service-button" onClick={handleExploreClick}>
           <FaTools className="icon" />&nbsp;&nbsp;&nbsp;Find out more
@@ -214,6 +209,20 @@ const Home = () => {
           </button>
         </div>
       </div>
+
+      {/* Service Modal */}
+      {isModalOpen && selectedService && (
+        <div className="service-modal-overlay">
+          <div className="service-modal">
+            <button className="modal-close-btn" onClick={closeModal}>
+              <FaTimes />
+            </button>
+            <div className="modal-icon">{selectedService.icon}</div>
+            <h3 className="modal-title">{selectedService.title}</h3>
+            <p className="modal-description">{selectedService.fullText}</p>
+          </div>
+        </div>
+      )}
 
       <div className="background-effect"></div>
     </div>
