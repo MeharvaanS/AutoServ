@@ -50,7 +50,16 @@
   width: 100%;
   height: auto;
   border-radius: 12px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
+.gallery-grid img.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
 
 /* Stack vertically for phone/tablet view */
 @media (max-width: 768px) {

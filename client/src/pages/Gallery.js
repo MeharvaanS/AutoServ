@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./Gallery.css";
 
+function FadeInImage({ src, alt }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      onLoad={() => setLoaded(true)}
+      className={loaded ? "loaded" : ""}
+    />
+  );
+}
+
+
 function Gallery() {
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState("");
@@ -29,9 +44,10 @@ function Gallery() {
       />
       <div className="gallery-grid">
         {filtered.map((img, idx) => (
-          <img key={idx} src={img.url} alt={img.public_id} />
+          <FadeInImage key={idx} src={img.url} alt={img.public_id} />
         ))}
       </div>
+
     </div>
   );
 }
