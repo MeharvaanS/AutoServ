@@ -32,7 +32,7 @@
   font-weight: 500;
   margin-top:130px;
   font-family: 'Orbitron', sans-serif;
-  margin-bottom: 70px;
+  margin-bottom: 80px;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   color: #fff; /* White color for the title */
   position: relative; /* Ensure it's above the overlay */
@@ -54,6 +54,7 @@
   width: 100%;
   max-width: 1200px;
   align-items: center;
+  margin-bottom: 80px;
   padding: 3px;
   animation: slideUp 1s ease-in-out;
   position: relative; /* Ensure it's above the overlay */
@@ -207,6 +208,10 @@
     height: 250px; /* Reduced height for mobile devices */
   }
 
+  .service-details {
+    left: 0px;
+  }
+
   .service-title {
     font-size: 1rem; /* Smaller font size for titles on mobile */
   }
@@ -217,9 +222,7 @@
 
   .service-price {
     font-size: 1rem; /* Smaller font size for prices on mobile */
-  }
-
-  .services-page::before {
-    top: -4px;
+    margin-left: 12px;
+    margin-bottom: 70px;
   }
 }

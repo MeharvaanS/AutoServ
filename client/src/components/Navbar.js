@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { FaHome, FaInfoCircle, FaTools, FaStar, FaEnvelope, FaBars } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaTools, FaStar, FaEnvelope, FaBars, FaPhotoVideo } from "react-icons/fa";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -70,6 +70,11 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/gallery" className={({ isActive }) => isActive ? "active" : ""}>
+              <FaPhotoVideo className="iconnav" /> Gallery
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/reviews" className={({ isActive }) => isActive ? "active" : ""}>
               <FaStar className="iconnav" /> Reviews
             </NavLink>
@@ -98,6 +103,11 @@ const Navbar = () => {
               <NavLink to="/services" className={({ isActive }) => isActive ? "active" : ""} onClick={toggleMobileMenu}>
                 <FaTools className="iconnav" /> Services
               </NavLink>
+            </li>
+            <li>
+            <NavLink to="/gallery" className={({ isActive }) => isActive ? "active" : ""}>
+              <FaPhotoVideo className="iconnav" /> Gallery
+            </NavLink>
             </li>
             <li>
               <NavLink to="/reviews" className={({ isActive }) => isActive ? "active" : ""} onClick={toggleMobileMenu}>

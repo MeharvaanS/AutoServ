@@ -21,26 +21,31 @@ const About = () => {
   const [speakingSection, setSpeakingSection] = useState(null);
   const [speechSynthesis, setSpeechSynthesis] = useState(null);
   const [voicesLoaded, setVoicesLoaded] = useState(false);
+  const [voicesError, setVoicesError] = useState(false);
 
   useEffect(() => {
-    // Initialize speech synthesis
     if ('speechSynthesis' in window) {
       const synth = window.speechSynthesis;
       setSpeechSynthesis(synth);
       
-      // Load voices when they become available
       const loadVoices = () => {
-        const voices = synth.getVoices();
-        setVoicesLoaded(true);
-        console.log('Available voices:', voices);
+        try {
+          const voices = synth.getVoices();
+          if (voices.length > 0) {
+            console.log("Available voices:", voices);
+            setVoicesLoaded(true);
+            setVoicesError(false);
+          } else {
+            setVoicesError(true);
+          }
+        } catch (error) {
+          console.error("Error loading voices:", error);
+          setVoicesError(true);
+        }
       };
       
       synth.onvoiceschanged = loadVoices;
-      
-      // Initial load attempt
-      if (synth.getVoices().length > 0) {
-        loadVoices();
-      }
+      loadVoices();
       
       return () => {
         synth.onvoiceschanged = null;
@@ -48,6 +53,8 @@ const About = () => {
           synth.cancel();
         }
       };
+    } else {
+      setVoicesError(true);
     }
   }, []);
 
@@ -70,105 +77,114 @@ const About = () => {
   };
 
   const toggleSpeech = (section) => {
-    if (speechSynthesis && voicesLoaded) {
-      // Stop any currently speaking
-      if (speechSynthesis.speaking) {
-        speechSynthesis.cancel();
+    if (!speechSynthesis || !voicesLoaded) {
+      if (voicesError) {
+        alert("Text-to-speech is not available in your browser");
       }
-      
-      // If clicking the same section that's currently speaking, just stop
+      return;
+    }
+
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
       if (speakingSection === section) {
         setSpeakingSection(null);
         return;
       }
-      
-      // Get the text to speak
-      let textToSpeak = '';
-      switch (section) {
-        case 'who':
-          textToSpeak = "Hey there! The name's Mac Machado, and I'll be the one taking care of all your automotive needs here at M.A.C. At Mac Auto Company, we take pride in the quality of our work and pay close attention to every detail just like you'd expect from someone who truly cares about your vehicle. Whether it's routine maintenance, general repairs, bodywork and refinishing, or even full interior and exterior detailing-we've got you covered. We're your one-stop shop for everything automotive.";
-          break;
-        case 'mission':
-          textToSpeak = "At Mac Auto Company, my mission is simple-treat every vehicle like it's my own and every customer like family. I'm building this business with honesty, precision, and a real passion for the trade. No cutting corners, no upselling-just solid, dependable work from someone who genuinely cares about keeping your car in top shape.";
-          break;
-        case 'why':
-          textToSpeak = "When you come to M.A.C, you're not just another number in a queue. Unlike the dealerships, Mr.Lube, or Midas, I personally handle your car with the attention and respect it deserves. You'll always deal directly with the technician—me—and that means clear communication, fair pricing, and quality you can trust. I bring dealership-level knowledge without the dealership-level prices. Here, it's personal-and that's the M.A.C difference.";
-          break;
-        default:
-          return;
-      }
-      
-      // Create the utterance
-      const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      
-      // Get available voices
-      const voices = speechSynthesis.getVoices();
-      
-      // List of known male voices across different browsers/platforms
-      const maleVoices = [
-        'Microsoft David',      // Edge on Windows
-        'Google US English Male', // Chrome
-        'Alex',                 // Safari on Mac
-        'Daniel',               // Chrome on Mac
-        'Fred',                 // Some systems
-        'Microsoft Mark',       // Edge
-        'Google UK English Male',
-        'Google Australia English Male'
-      ];
-      
-      // Try to find a male voice
-      let selectedVoice = null;
-      
-      // First try exact matches from our male voices list
-      for (const name of maleVoices) {
-        const voice = voices.find(v => v.name === name);
-        if (voice) {
-          selectedVoice = voice;
-          break;
-        }
-      }
-      
-      // If no exact match, try partial matches
-      if (!selectedVoice) {
-        for (const name of maleVoices) {
-          const voice = voices.find(v => v.name.includes(name));
-          if (voice) {
-            selectedVoice = voice;
-            break;
-          }
-        }
-      }
-      
-      // If still no male voice, try to find any voice that sounds male
-      if (!selectedVoice) {
-        selectedVoice = voices.find(v => 
-          v.name.toLowerCase().includes('male') || 
-          v.name.includes('David') ||
-          v.name.includes('Daniel') ||
-          v.name.includes('Mark')
-        );
-      }
-      
-      // Final fallback to any English voice
-      if (!selectedVoice) {
-        selectedVoice = voices.find(v => v.lang.includes('en')) || voices[0];
-      }
-      
-      if (selectedVoice) {
-        utterance.voice = selectedVoice;
-      }
-      
-      // Adjust speech parameters for natural male voice
-      utterance.rate = 1.0;      // Normal speed
-      utterance.pitch = 0.9;     // Slightly lower pitch for male voice
-      utterance.volume = 1.0;    // Full volume
-      
-      utterance.onend = () => setSpeakingSection(null);
-      utterance.onerror = () => setSpeakingSection(null);
-      
-      speechSynthesis.speak(utterance);
-      setSpeakingSection(section);
     }
+
+    let textToSpeak = '';
+    switch (section) {
+      case 'who':
+        textToSpeak = "Hey there! The name's Mac Machado, and I'll be the one taking care of all your automotive needs here at M.A.C. At Mac Auto Company, we take pride in the quality of our work and pay close attention to every detail just like you'd expect from someone who truly cares about your vehicle. Whether it's routine maintenance, general repairs, bodywork and refinishing, or even full interior and exterior detailing-we've got you covered. We're your one-stop shop for everything automotive.";
+        break;
+      case 'mission':
+        textToSpeak = "At Mac Auto Company, my mission is simple-treat every vehicle like it's my own and every customer like family. I'm building this business with honesty, precision, and a real passion for the trade. No cutting corners, no upselling-just solid, dependable work from someone who genuinely cares about keeping your car in top shape.";
+        break;
+      case 'why':
+        textToSpeak = "When you come to M.A.C, you're not just another number in a queue. Unlike the dealerships, Mr.Lube, or Midas, I personally handle your car with the attention and respect it deserves. You'll always deal directly with the technician—me—and that means clear communication, fair pricing, and quality you can trust. I bring dealership-level knowledge without the dealership-level prices. Here, it's personal-and that's the M.A.C difference.";
+        break;
+      default:
+        return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    const voices = speechSynthesis.getVoices();
+
+    // Enhanced male voice selection
+    let selectedVoice = null;
+    
+    // Priority list of male voice identifiers
+    const maleVoicePriorityList = [
+      { name: 'Microsoft David', lang: 'en-US' },
+      { name: 'Google US English Male', lang: 'en-US' },
+      { name: 'Alex', lang: 'en-US' },
+      { name: 'Daniel', lang: 'en-GB' },
+      { name: 'Fred', lang: 'en-US' },
+      { name: 'Microsoft Mark', lang: 'en-US' },
+      { name: 'Google UK English Male', lang: 'en-GB' },
+      { name: 'Google Australia English Male', lang: 'en-AU' }
+    ];
+
+    // Try to find exact matches first
+    for (const preferredVoice of maleVoicePriorityList) {
+      const foundVoice = voices.find(voice => 
+        voice.name === preferredVoice.name && 
+        voice.lang.includes(preferredVoice.lang))
+      if (foundVoice) {
+        selectedVoice = foundVoice;
+        break;
+      }
+    }
+
+    // Fallback to any male-sounding voice
+    if (!selectedVoice) {
+      selectedVoice = voices.find(voice => {
+        const lowerName = voice.name.toLowerCase();
+        return (
+          lowerName.includes('male') || 
+          lowerName.includes('man') ||
+          lowerName.includes('david') ||
+          lowerName.includes('daniel') ||
+          lowerName.includes('mark') ||
+          lowerName.includes('paul') ||
+          lowerName.includes('fred') ||
+          lowerName.includes('alex')
+        );
+      });
+    }
+
+    // Final fallback to any English voice
+    if (!selectedVoice) {
+      selectedVoice = voices.find(voice => voice.lang.includes('en')) || voices[0];
+    }
+
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+      console.log("Using voice:", selectedVoice.name);
+      
+      // Natural speech parameters
+      utterance.rate = 0.98;
+      utterance.pitch = 0.92;
+      utterance.volume = 1.0;
+      
+      // Add pauses for natural speech
+      utterance.text = utterance.text
+        .replace(/\. /g, '.  ')
+        .replace(/, /g, ',  ');
+    }
+
+    // Add subtle pitch variations
+    utterance.onboundary = (event) => {
+      if (event.name === 'word') {
+        utterance.pitch = 0.9 + Math.random() * 0.05;
+      }
+    };
+
+    utterance.onend = () => setSpeakingSection(null);
+    utterance.onerror = () => setSpeakingSection(null);
+
+    speechSynthesis.speak(utterance);
+    setSpeakingSection(section);
   };
 
   useEffect(() => {
@@ -191,7 +207,7 @@ const About = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -203,7 +219,7 @@ const About = () => {
 
   return (
     <div className="about-container">
-      {/* Hero Section with Image */}
+      {/* Hero Section */}
       <div className="hero-section">
         <div className="hero-image-container">
           <img 
@@ -228,13 +244,16 @@ const About = () => {
           <div className={`about-item ${isVisible.about1 ? 'visible' : ''}`}>
             <div className="about-header">
               <FaTools className="about-icon" />
-              <h3>About M.A.C <button 
-                className="speaker-btn"
-                onClick={() => toggleSpeech('who')}
-                aria-label="Read section aloud"
-              >
-                {speakingSection === 'who' ? <FaVolumeMute /> : <FaVolumeUp />}
-              </button></h3>
+              <h3>About M.A.C 
+                <button 
+                  className="speaker-btn"
+                  onClick={() => toggleSpeech('who')}
+                  aria-label="Read section aloud"
+                  disabled={!voicesLoaded || voicesError}
+                >
+                  {speakingSection === 'who' ? <FaVolumeMute /> : <FaVolumeUp />}
+                </button>
+              </h3>
             </div>
             <p className="about-details">
               {expandedSections.who 
@@ -243,6 +262,7 @@ const About = () => {
               <button 
                 className="read-more-btn" 
                 onClick={() => toggleExpand('who')}
+                aria-label={expandedSections.who ? "Show less" : "Show more"}
               >
                 {expandedSections.who ? <FaChevronUp /> : <FaChevronDown />}
               </button>
@@ -251,13 +271,16 @@ const About = () => {
           <div className={`about-item ${isVisible.about2 ? 'visible' : ''}`}>
             <div className="about-header">
               <FaCogs className="about-icon" />
-              <h3>Our Mission <button 
-                className="speaker-btn"
-                onClick={() => toggleSpeech('mission')}
-                aria-label="Read section aloud"
-              >
-                {speakingSection === 'mission' ? <FaVolumeMute /> : <FaVolumeUp />}
-              </button></h3>
+              <h3>Our Mission 
+                <button 
+                  className="speaker-btn"
+                  onClick={() => toggleSpeech('mission')}
+                  aria-label="Read section aloud"
+                  disabled={!voicesLoaded || voicesError}
+                >
+                  {speakingSection === 'mission' ? <FaVolumeMute /> : <FaVolumeUp />}
+                </button>
+              </h3>
             </div>
             <p className="about-details">
               {expandedSections.mission
@@ -266,6 +289,7 @@ const About = () => {
               <button 
                 className="read-more-btn" 
                 onClick={() => toggleExpand('mission')}
+                aria-label={expandedSections.mission ? "Show less" : "Show more"}
               >
                 {expandedSections.mission ? <FaChevronUp /> : <FaChevronDown />}
               </button>
@@ -274,14 +298,16 @@ const About = () => {
           <div className={`about-item ${isVisible.about3 ? 'visible' : ''}`}>
             <div className="about-header">
               <FaCar className="about-icon" />
-              <h3>Why Me? <button 
-                className="speaker-btn"
-                onClick={() => toggleSpeech('why')}
-                aria-label="Read section aloud"
-              >
-                {speakingSection === 'why' ? <FaVolumeMute /> : <FaVolumeUp />}
-              </button></h3>
-              
+              <h3>Why Me? 
+                <button 
+                  className="speaker-btn"
+                  onClick={() => toggleSpeech('why')}
+                  aria-label="Read section aloud"
+                  disabled={!voicesLoaded || voicesError}
+                >
+                  {speakingSection === 'why' ? <FaVolumeMute /> : <FaVolumeUp />}
+                </button>
+              </h3>
             </div>
             <p className="about-details">
               {expandedSections.why
@@ -290,6 +316,7 @@ const About = () => {
               <button 
                 className="read-more-btn" 
                 onClick={() => toggleExpand('why')}
+                aria-label={expandedSections.why ? "Show less" : "Show more"}
               >
                 {expandedSections.why ? <FaChevronUp /> : <FaChevronDown />}
               </button>

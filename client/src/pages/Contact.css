@@ -6,6 +6,7 @@
   padding: 20px;
   font-family: Arial, sans-serif;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 70px;
   position: relative;
   overflow: hidden;
   padding-bottom: 50px;
@@ -13,12 +14,12 @@
 
 .business-info a {
   text-decoration: none; /* Remove underline */
-  color: whitesmoke; /* Set text color to whitesmoke */
+  color: #bebebe; /* Set text color to whitesmoke */
   transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .business-info a:hover {
-  color: #18689a; /* Change text color to blue on hover */
+  color: #ffffff!important; /* Change text color to blue on hover */
 }
 
 .video-background-contact {
@@ -237,7 +238,7 @@
 button[type="submit"] {
   width: 104%;
   padding: 10px;
-  background-color: rgb(41 71 103 / 61%);
+  background-color: #0c131d;
   color: white;
   border: none;
   border-radius: 6px;
@@ -249,8 +250,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: rgb(41 71 103 / 75%);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  background-color:  #11152d;
 }
 
 .contact-info p {
@@ -267,7 +267,7 @@ button[type="submit"]:hover {
   width: 85%;
   gap: 10px;
   padding: 10px;
-  background-color: rgb(41 71 103 / 61%);
+  background-color: #0c131d;
   color: white;
   text-decoration: none;
   border-radius: 15px;
@@ -277,8 +277,7 @@ button[type="submit"]:hover {
 }
 
 .whatsapp-button:hover {
-  background-color: rgb(41 71 103 / 75%);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  background-color: #11152d;
 }
 
 .whatsapp-icon {
