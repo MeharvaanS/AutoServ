@@ -105,7 +105,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-            <NavLink to="/gallery" className={({ isActive }) => isActive ? "active" : ""}>
+            <NavLink to="/gallery" className={({ isActive }) => isActive ? "active" : ""} onClick={toggleMobileMenu}>
               <FaPhotoVideo className="iconnav" /> Gallery
             </NavLink>
             </li>
