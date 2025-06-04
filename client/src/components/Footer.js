@@ -18,7 +18,7 @@ const Footer = () => {
           <FaInstagram />
         </a>
         <a
-          href="mailto:macmachado44@gmail.com"
+          href="mailto:mac@macautocompany.ca"
           className="footer-icon"
         >
           <FaEnvelope />

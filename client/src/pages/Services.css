@@ -205,7 +205,7 @@
 @media (max-width: 768px) {
 
   .service-item {
-    height: 250px; /* Reduced height for mobile devices */
+    height: 280px; /* Reduced height for mobile devices */
   }
 
   .service-details {

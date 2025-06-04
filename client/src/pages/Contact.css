@@ -25,10 +25,9 @@
 .video-background-contact {
   position: absolute;
   top: 0;
-  margin-top: 10px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 63%;
   object-fit: cover;
   z-index: 0; /* Ensure video is behind content */
 }
@@ -68,7 +67,7 @@
 /* Stack vertically for phone/tablet view */
 @media (max-width: 768px) {
   .video-background-contact {
-    height: 50%;
+    height: 38%;
   }
 
   .contact-columns {
@@ -114,6 +113,11 @@
   .business-info p {
     font-size: 16px; /* Smaller font size for phones */
   }
+
+  .contact-form{
+    margin-right: 25px!important;
+  }
+
 }
 
 /* Remove the existing slideUp animation and replace with these */

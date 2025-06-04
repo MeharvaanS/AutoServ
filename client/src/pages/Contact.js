@@ -55,7 +55,7 @@ function Contact() {
       `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nServices: ${formData.services}`
     );
 
-    const mailtoLink = `mailto:macmachado44@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:mac@macautocompany.ca?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
 
     setFormData({
@@ -163,15 +163,29 @@ function Contact() {
             </p>
             <br></br>
             <p>
-              <a href="mailto:macmachado44@gmail.com">
+              <a href="mailto:mac@macautocompany.ca">
                 <FaEnvelope className="mail-icon" />
-                &nbsp;&nbsp;macmachado44@gmail.com
+                &nbsp;&nbsp;mac@macautocompany.ca
               </a>
             </p>
           </div>
         </div>
       </div>
-    </div>
+      <iframe
+        title="Google Map"
+        src="https://www.google.com/maps?q=1013+Dundas+Street+West,+Oakville,+ON&output=embed"
+        style={{
+          width: '100%',
+          height: '450px',
+          marginTop: '80px',
+          marginBottom: '-30px',
+          border: 0,
+          filter: 'invert(120%) hue-rotate(580deg) contrast(130%)'
+        }}
+        allowFullScreen
+        loading="lazy"
+      />
+  </div>
   );
 }
 
