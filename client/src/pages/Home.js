@@ -196,40 +196,6 @@ const Home = () => {
           <FaStar className="icon" />&nbsp;&nbsp;&nbsp;Leave a review
         </button>
       </div>
-
-      {/* Call-to-Action Section */}
-      <div className="cta-section">
-        <video autoPlay loop muted playsInline className="cta-video-background">
-          <source src="/videos/v6.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="cta-content">
-          <h2 className="section-title">Ready to Get Started?</h2>
-          <p>Contact us today to schedule your car repair or maintenance.</p>
-          <button className="cta-button" onClick={handleContactClick}>
-            <FaEnvelope className="icon" />&nbsp;&nbsp;&nbsp;Contact us
-          </button>
-        </div>
-      </div>
-
-      {/* Service Modal */}
-      {isModalOpen && selectedService && (
-        <div className="service-modal-overlay">
-          <div className="service-modal">
-            <button className="modal-close-btn" onClick={closeModal}>
-              <FaTimes />
-            </button>
-            <div className="modal-icon">{selectedService.icon}</div>
-            <h3 className="modal-title">{selectedService.title}</h3>
-            <p className="modal-description">{selectedService.fullText}</p>
-            <button class="modal-button" onClick={handleExploreClick}>
-          <FaTools className="icon" />&nbsp;&nbsp;&nbsp;Find out more
-        </button>
-          </div>
-        </div>
-      )}
-
-      <div className="background-effect"></div>
     </div>
   );
 };

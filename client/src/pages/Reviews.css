@@ -287,7 +287,7 @@
     padding: 10px 40px;
     font-size: 1rem;
     margin-top: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
 
   /* Adjust form section for mobile */
@@ -334,11 +334,10 @@
   }
 
   #review-button-scroll {
-    padding: 8px 30px;
-    font-size: 1.2rem;
+    padding: 8px 80px;
   }
 
   .submit-button {
-    padding: 8px 60px;
+    padding: 8px 80px;
   }
 }

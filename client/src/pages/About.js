@@ -229,7 +229,7 @@ const About = () => {
           />
         </div>
         <div className="intro-box-about">
-          <h1 className="title">Know about us</h1>
+          <h1 className="title">About us</h1>
           <p className="subtitle">Where Precision Meets Passion</p>
           <button onClick={scrollToAboutContent} id="intro-button">
             Learn More
@@ -239,7 +239,7 @@ const About = () => {
 
       {/* About Content Section */}
       <div className="about-content-section">
-        <h2 id="about-title">My Story</h2>
+        <h2 id="about-title">Our Story</h2>
         <div className="about-content">
           <div className={`about-item ${isVisible.about1 ? 'visible' : ''}`}>
             <div className="about-header">
@@ -298,7 +298,7 @@ const About = () => {
           <div className={`about-item ${isVisible.about3 ? 'visible' : ''}`}>
             <div className="about-header">
               <FaCar className="about-icon" />
-              <h3>Why Me? 
+              <h3>Why Us? 
                 <button 
                   className="speaker-btn"
                   onClick={() => toggleSpeech('why')}
@@ -327,12 +327,12 @@ const About = () => {
 
       {/* Values Section */}
       <div className="values-section">
-        <h2 id="values-title">My Core Values</h2>
+        <h2 id="values-title">Our Core Values</h2>
         <div className="values-grid">
           <div className={`value-item ${isVisible.value1 ? 'visible' : ''}`}>
             <FaHeart className="value-icon" />
             <h3>Passion</h3>
-            <p>We love what I do, and it shows in every repair.</p>
+            <p>We love what we do, and it shows in every repair.</p>
           </div>
           <div className={`value-item ${isVisible.value2 ? 'visible' : ''}`}>
             <FaTools className="value-icon" />
@@ -344,21 +344,6 @@ const About = () => {
             <h3>Reliability</h3>
             <p>You can count on us to get the job done right.</p>
           </div>
-        </div>
-      </div>
-
-      {/* Call-to-Action Section */}
-      <div className="cta-section">
-        <video autoPlay loop muted playsInline className="cta-video-background">
-          <source src="/videos/v6.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="cta-content">
-          <h2 className="section-title">Ready to Experience Excellence?</h2>
-          <p>Contact us today to schedule your car repair or maintenance.</p>
-          <button className="cta-button" onClick={handleContactClick}>
-            <FaEnvelope className="icon" />&nbsp;&nbsp;&nbsp;Contact us
-          </button>
         </div>
       </div>
     </div>

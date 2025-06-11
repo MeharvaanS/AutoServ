@@ -49,7 +49,7 @@
     margin-bottom: 70px;
     background: #0e152500; /* Transparent background */
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
-    padding: 10px 50px;
+    padding: 10px 80px;
     font-size: 1.2rem;
     color: #fff;
     border: double;
@@ -389,6 +389,26 @@
 @media (max-width: 768px) {
   .hero-section {
     flex-direction: column;
+  }
+
+  .value-item h3{
+    font-size:1.1rem;
+  }
+
+  .about-item h3{
+    font-size:1.1rem;
+  }
+
+  #about-title{
+    font-size:1.5rem;
+  }
+
+  #values-title{
+    font-size:1.5rem;
+  }
+
+  .about-item p{
+    font-size:1rem;
   }
 
   .cta-content .section-title{
