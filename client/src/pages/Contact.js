@@ -55,7 +55,7 @@ function Contact() {
       `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nServices: ${formData.services}`
     );
 
-    const mailtoLink = `mailto:mac@macautocompany.ca?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:mac.mechanic.express@gmail.com?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
 
     setFormData({
@@ -163,9 +163,9 @@ function Contact() {
             </p>
             <br></br>
             <p>
-              <a href="mailto:mac@macautocompany.ca">
+              <a href="mailto:mac.mechanic.express@gmail.com">
                 <FaEnvelope className="mail-icon" />
-                &nbsp;&nbsp;mac@macautocompany.ca
+                &nbsp;&nbsp;mac.mechanic.express@gmail.com
               </a>
             </p>
           </div>

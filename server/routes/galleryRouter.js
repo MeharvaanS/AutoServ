@@ -6,8 +6,8 @@ dotenv.config();
 
 const router = express.Router();
 
-const CLOUD_NAME = "ddy1ask4b";
-const API_KEY = "336696688522912";
+const CLOUD_NAME = "ddmmpgunn";
+const API_KEY = "257253799944995";
 const API_SECRET = process.env.CLOUDINARY_API_SECRET;
 const base64Auth = Buffer.from(`${API_KEY}:${API_SECRET}`).toString("base64");
 
