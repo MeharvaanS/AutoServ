@@ -122,82 +122,97 @@ const Home = () => {
     navigate("/contact");
   };
 
-  return (
-    <div className="home-container">
-      {/* Hero Section */}
-      <div className="hero-section">
-        <video autoPlay loop muted playsInline className="video-background-home">
-          <source src="/videos/v1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="intro-box">
-          <h1 className="title">Welcome to M.A.C</h1>
-          <p className="subtitle">Precision under the hood, trust at the wheel</p>
-          <button onClick={scrollToServiceContent} id="intro-button">Get started</button>
+return (
+  <div className="home-container">
+    {/* Hero Section */}
+    <div className="hero-section">
+      <video autoPlay loop muted playsInline className="video-background-home">
+        <source src="/videos/v1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="intro-box">
+        <h1 className="title">Welcome to M.A.C</h1>
+        <p className="subtitle">Precision under the hood, trust at the wheel</p>
+        <button onClick={scrollToServiceContent} id="intro-button">Get started</button>
+      </div>
+    </div>
+
+    {/* Services Section */}
+    <div className="services-section">
+      <h2 id="services-title">Our Services</h2>
+      <div className="services-scroll-wrapper">
+        <div 
+          ref={servicesCardsRef} 
+          className={`services-grid ${areCardsVisible ? 'visible' : ''}`}
+        >
+          {services.map((service) => (
+            <div className="service-card" key={service.id}>
+              <div className="service-icon">{service.icon}</div>
+              <h3>{service.title}</h3>
+              <button 
+                className="read-more-btn-home" 
+                onClick={() => openModal(service.id)}
+              >
+                See Details <FaChevronRight className="read-more-icon" />
+              </button>
+            </div>
+          ))}
         </div>
       </div>
+      <button id="service-button" onClick={handleExploreClick}>
+        <FaTools className="icon" />&nbsp;&nbsp;&nbsp;Find out more
+      </button>
+    </div>
 
-      {/* Services Section */}
-      <div className="services-section">
-        <h2 id="services-title">Our Services</h2>
-        <div className="services-scroll-wrapper">
-          <div 
-            ref={servicesCardsRef} 
-            className={`services-grid ${areCardsVisible ? 'visible' : ''}`}
-          >
-            {services.map((service) => (
-              <div className="service-card" key={service.id}>
-                <div className="service-icon">{service.icon}</div>
-                <h3>{service.title}</h3>
-                <button 
-                  className="read-more-btn-home" 
-                  onClick={() => openModal(service.id)}
-                >
-                  See Details <FaChevronRight className="read-more-icon" />
-                </button>
+    {/* Testimonials Section */}
+    <div className="testimonials-section">
+      <h2 id="review-title-home">Customer Reviews</h2>
+      <div className="testimonials-scroll-wrapper">
+        <button className="scroll-button left" onClick={() => scrollTestimonials(-300)}>
+          <FaChevronLeft />
+        </button>
+
+        <div className="testimonials-container">
+          <div className="testimonials-grid">
+            {reviews.map((review, index) => (
+              <div className="testimonial-card" key={index}>
+                <p className="review-rating">{renderStars(review.rating)}</p>
+                <p>
+                  {review.message} ~<em>{review.name}</em>
+                </p>
+                <p className="review-date">
+                  {review.createdAt ? review.createdAt.split("T")[0] : "No date available"}
+                </p>
               </div>
             ))}
           </div>
         </div>
-        <button id="service-button" onClick={handleExploreClick}>
-          <FaTools className="icon" />&nbsp;&nbsp;&nbsp;Find out more
+
+        <button className="scroll-button right" onClick={() => scrollTestimonials(300)}>
+          <FaChevronRight />
         </button>
       </div>
-
-      {/* Testimonials Section */}
-      <div className="testimonials-section">
-        <h2 id="review-title-home">Customer Reviews</h2>
-        <div className="testimonials-scroll-wrapper">
-          <button className="scroll-button left" onClick={() => scrollTestimonials(-300)}>
-            <FaChevronLeft />
-          </button>
-
-          <div className="testimonials-container">
-            <div className="testimonials-grid">
-              {reviews.map((review, index) => (
-                <div className="testimonial-card" key={index}>
-                  <p className="review-rating">{renderStars(review.rating)}</p>
-                  <p>
-                    {review.message} ~<em>{review.name}</em>
-                  </p>
-                  <p className="review-date">
-                    {review.createdAt ? review.createdAt.split("T")[0] : "No date available"}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <button className="scroll-button right" onClick={() => scrollTestimonials(300)}>
-            <FaChevronRight />
-          </button>
-        </div>
-        <button id="review-button" onClick={handleReviewClick}>
-          <FaStar className="icon" />&nbsp;&nbsp;&nbsp;Leave a review
-        </button>
-      </div>
+      <button id="review-button" onClick={handleReviewClick}>
+        <FaStar className="icon" />&nbsp;&nbsp;&nbsp;Leave a review
+      </button>
     </div>
-  );
+    {isModalOpen && selectedService && (
+  <div className="modal-overlay" onClick={closeModal}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <button className="modal-close-btn" onClick={closeModal}>
+        <FaTimes />
+      </button>
+      {/* Add icon here */}
+      <div className="modal-icon">{selectedService.icon}</div>
+      <h2>{selectedService.title}</h2>
+      <p>{selectedService.fullText}</p>
+    </div>
+  </div>
+)}
+
+  </div>
+);
+
 };
 
 export default Home;

@@ -30,14 +30,14 @@ const Services = () => {
       id: 1,
       title: "Engine Oil / Filter Replacement",
       description: "☑️ Premium oil only☑️ Engine bay inspection",
-      price: "$120",
+      price: "$100",
       image: "https://images.pexels.com/photos/13065694/pexels-photo-13065694.jpeg?auto=compress&cs=tinysrgb&w=600", // Example image path
     },
     {
       id: 2,
       title: "Oil / Filter Replacement + Tire Rotation",
       description: "☑️ Engine bay inspection☑️ Tire inspection",
-      price: "$160",
+      price: "$140",
       image: "https://images.pexels.com/photos/16341407/pexels-photo-16341407/free-photo-of-pictographs-on-dashboard-in-car.jpeg?auto=compress&cs=tinysrgb&w=1200", // Example image path
     },
     {
